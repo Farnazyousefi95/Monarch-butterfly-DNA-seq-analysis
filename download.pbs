@@ -1,0 +1,46 @@
+#!/bin/bash
+#PBS -N download_SRR25297534
+#PBS -q medium
+#PBS -o /scratch/aubfxy001/week2_assignment/download.out
+#PBS -e /scratch/aubfxy001/week2_assignment/download.err
+#PBS -l walltime=3:00:00
+#PBS -l mem=12gb
+#PBS -l nodes=1:ppn=4
+
+# Initialize module environment
+source /etc/profile
+source /etc/profile.d/modules.sh
+export MODULEPATH=/apps/x86-64/apps/spack_0.19.1/spack/share/spack/lmod/linux-rocky8-x86_64/Core:$MODULEPATH
+
+# Create and set temporary directory
+mkdir -p /scratch/aubfxy001/week2_assignment/tmp
+export TMPDIR=/scratch/aubfxy001/week2_assignment/tmp
+
+# Explicitly set PATH for sratoolkit binaries
+export PATH=/apps/x86-64/apps/spack_0.19.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/sratoolkit-3.0.0-mxcpa5umngraag5gvnpmnsmwe4w52ksf/bin:$PATH
+
+# Load modules as fallback
+module load sra/3.0.0
+module load sratoolkit/3.0.0-mxcpa5u
+
+# Verify environment
+module list >> log.txt
+prefetch --version >> log.txt
+
+# Change to project directory
+cd /scratch/aubfxy001/week2_assignment
+
+# Configure SRA cache
+mkdir -p /scratch/aubfxy001/week2_assignment/sra
+vdb-config --set /repository/user/main/public/root=/scratch/aubfxy001/week2_assignment/sra
+
+# Download .sra file
+prefetch SRR25297534
+
+# Convert to FASTQ
+fasterq-dump SRR25297534 --split-files --outdir .
+
+# Log file sizes
+echo "Download and conversion complete: $(date)" >> log.txt
+echo "FASTQ files:" >> log.txt
+ls -lh SRR25297534*.fastq >> log.txt
