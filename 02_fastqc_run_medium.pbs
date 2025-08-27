@@ -1,0 +1,40 @@
+#!/bin/bash
+#PBS -N fastqc_SRR25297534
+#PBS -q medium
+#PBS -l select=1:ncpus=1:mem=4gb
+#PBS -l walltime=01:10:00
+#PBS -o /scratch/aubfxy001/week2_assignment/fastqc.out
+#PBS -e /scratch/aubfxy001/week2_assignment/fastqc.err
+
+set -Ee -o pipefail
+export LC_ALL=C LANG=C
+
+# Use the exact tools you verified on this cluster
+JAVA_HOME=/apps/x86-64/apps/jdk_1.7.0_17/jdk1.7.0_17
+FASTQC_DIR=/apps/x86-64/apps/fastqc_0.10.1/FastQC
+export PATH="$JAVA_HOME/bin:$FASTQC_DIR:$PATH"
+
+cd "${PBS_O_WORKDIR:-/scratch/aubfxy001/week2_assignment}"
+mkdir -p qc/fastqc tmp
+export TMPDIR="$PWD/tmp"
+
+# sanity prints to stdout
+hostname
+which java && java -version
+which fastqc && fastqc --version
+
+# inputs
+R1=SRR25297534_1.fastq
+R2=SRR25297534_2.fastq
+test -s "$R1" && test -s "$R2"
+
+# run FastQC (single core to match ncpus=1)
+fastqc -t 1 -o qc/fastqc "$R1" "$R2"
+
+# quick PASS/WARN/FAIL summary
+for z in qc/fastqc/*_fastqc.zip; do
+  echo "### $(basename "$z")"
+  unzip -p "$z" '*/summary.txt' | sed -n '1,200p' || true
+done
+
+echo "HTML reports in: qc/fastqc/"
