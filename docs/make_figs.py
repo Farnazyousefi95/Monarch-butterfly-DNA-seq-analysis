@@ -31,7 +31,7 @@ dh_path = f"{PROJ}/stats/depth_hist.tsv"
 if os.path.exists(dh_path):
     dh = pd.read_csv(dh_path, sep="\t", header=None, names=["depth","count"])
     plt.figure(figsize=(8,4))
-    plt.plot(dh['depth'], dh['count'])
+    plt.plot(dh['depth'].to_numpy(), dh['count'].to_numpy())
     plt.xlabel("Depth (×)  [101 = 100+]")
     plt.ylabel("# genomic positions")
     plt.title("Genome-wide depth histogram")
@@ -58,7 +58,7 @@ if os.path.exists(ss_path):
         # Limit very large inserts for visualization (e.g., <= 1000)
         is_df = is_df[is_df["insert"]<=1000]
         plt.figure(figsize=(8,4))
-        plt.plot(is_df["insert"], is_df["count"])
+        plt.plot(is_df["insert"].to_numpy(), is_df["count"].to_numpy())
         plt.xlabel("Insert size (bp)")
         plt.ylabel("Count")
         plt.title("Insert size distribution (truncated to 1000 bp)")
