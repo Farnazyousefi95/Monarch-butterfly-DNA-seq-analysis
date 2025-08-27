@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -N bwa_mem_dplex
+#PBS -q medium
+#PBS -l select=1:ncpus=8:mem=16gb
+#PBS -l walltime=04:00:00
+#PBS -o /scratch/aubfxy001/week2_assignment/align.out
+#PBS -e /scratch/aubfxy001/week2_assignment/align.err
+
+set -Ee -o pipefail
+export LC_ALL=C LANG=C
+
+PROJ=/scratch/aubfxy001/week2_assignment
+cd "$PROJ"
+
+# Inputs
+REF=ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa
+R1=trim/SRR25297534_1P.trim.fastq.gz
+R2=trim/SRR25297534_2P.trim.fastq.gz
+
+# Activate your conda env with bwa+samtools
+source ~/miniforge3/etc/profile.d/conda.sh
+conda activate dplex
+
+# Sanity checks
+test -s "$REF" && test -s "${REF}.fai"
+test -s "$R1"  && test -s "$R2"
+
+# Output names
+BAM=SRR25297534.dplexv4.sorted.bam
+
+# Read group (good practice for downstream)
+RG='@RG\tID:SRR25297534\tSM:SRR25297534\tPL:ILLUMINA\tLB:lib1\tPU:unit1'
+
+# Align -> sort (coordinate) in one pass
+bwa mem -t 8 -R "$RG" "$REF" "$R1" "$R2" \
+  | samtools sort -@ 8 -o "$BAM" -
+
+# Index and basic mapping stats
+samtools index "$BAM"
+samtools flagstat "$BAM"   > SRR25297534.flagstat.txt
+samtools idxstats "$BAM"   > SRR25297534.idxstats.tsv
+
+echo "[DONE] Alignment finished: $BAM"
