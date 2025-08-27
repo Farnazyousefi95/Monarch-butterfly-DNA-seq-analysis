@@ -1,0 +1,3353 @@
+Last login: Tue Aug 26 13:27:22 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+MacBookPro:~ farnazyousefi$ ssh aubfxy001@asax.asc.edu
+(aubfxy001@asax.asc.edu) Password: 
+(aubfxy001@asax.asc.edu) Duo two-factor login for aubfxy001
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-8494
+ 2. Phone call to XXX-XXX-8494
+ 3. SMS passcodes to XXX-XXX-8494
+
+Passcode or option (1-3): 1
+Success. Logging you in...
+Success. Logging you in...
+----------------------------------------------------------------------------
+The HPC systems are NOT certified for HIPAA, ITAR, 800-171, DoD classified,
+GDPR, or most other government-defined security standards.
+ 
+The HPC documentation website is https://hpcdocs.asc.edu/ If you have any
+questions please contact hpc@asc.edu or call the helpdesk at 256-971-7448
+or 800-338-8320 if you are outside of Huntsville.  We can often give the
+fastest assistance if we receive an email with the directory and job number.
+
+----------------------------------------------------------------------------
+Queue jobs most recently completed
+     job                            parallel   memory      memory
+  number           job name cores efficiency  request  efficiency
+-------- ------------------ ----- ----------  -------  ----------
+    1432             sra_dl     4     72.62%      8gb     104.86%
+Jobs with a parallel efficiency below 75% should use fewer cores.
+Requesting more resources than needed increases the job wait time in the queue.
+ 
+aubfxy001@asaxlogin1:~> module spider kraken2        # list versions and where it lives
+module show kraken2/2.1.3    # see details (pick a version you have)
+module load kraken2/2.1.3
+module list                  # see what's loaded
+module purge                 # unload everything if needed
+Lmod has detected the following error:  Unable to find: "kraken2".
+
+
+
+Lmod Warning:  Failed to find the following module(s):
+"kraken2/2.1.3" in your MODULEPATH
+Try:
+
+    $ module spider kraken2/2.1.3
+
+to see if the module(s) are available across all compilers and MPI
+implementations.
+
+
+
+Lmod has detected the following error:  The following module(s) are unknown: "kraken2/2.1.3"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "kraken2/2.1.3"
+
+Also make sure that all modulefiles written in TCL start with the string #%Module
+
+
+
+No modules loaded
+aubfxy001@asaxlogin1:~> mkdir -p ~/cbc_w2/{code,raw,results/{qc,tax,tables,assembly,coi,figures,logs}}
+mkdir -p /scratch/$USER/{cbc_w2,dbs/kraken2}
+aubfxy001@asaxlogin1:~> curl -L https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj -C ~
+~/bin/micromamba shell init -s bash -p ~/micromamba
+source ~/.bashrc
+
+micromamba create -y -n cbcw2 -c conda-forge -c bioconda \
+  fastqc jellyfish genomescope2 \
+  kraken2 krakentools krona-tools \
+  megahit bowtie2 samtools bcftools \
+  getorganelle mitofinder mafft fasttree
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  3979    0  3979    0     0   2930      0 --:--:--  0:00:01 --:--:-- 10812
+info/files
+info/has_prefix
+info/index.json
+info/test/run_test.sh
+info/hash_input.json
+info/paths.json
+info/recipe/C_ARES_LICENSE.txt
+info/licenses/C_ARES_LICENSE.txt
+info/recipe/conda_build_config.yaml
+info/recipe/REPROC_LICENSE.txt
+info/licenses/REPROC_LICENSE.txt
+info/licenses/NLOHMANN_JSON_LICENSE.txt
+info/recipe/NLOHMANN_JSON_LICENSE.txt
+info/licenses/CURL_LICENSE.txt
+info/recipe/CURL_LICENSE.txt
+info/recipe/CPP_FILESYSTEM_LICENSE.txt
+info/licenses/ZLIB_LICENSE.txt
+info/recipe/ZLIB_LICENSE.txt
+info/recipe/LIBNGHTTP2_LICENSE.txt
+info/licenses/LIBNGHTTP2_LICENSE.txt
+info/licenses/LIBLZ4_LICENSE.txt
+info/recipe/LIBLZ4_LICENSE.txt
+info/recipe/SPDLOG_LICENSE.txt
+info/licenses/SPDLOG_LICENSE.txt
+info/licenses/FMT_LICENSE.txt
+info/recipe/FMT_LICENSE.txt
+info/recipe/LIBSOLV_LICENSE.txt
+info/licenses/LIBSOLV_LICENSE.txt
+info/licenses/mamba/LICENSE
+info/recipe/build.sh
+info/recipe/bld.bat
+info/licenses/ZSTD_LICENSE.txt
+info/recipe/TERMCOLOR_CPP_LICENSE.txt
+info/recipe/ZSTD_LICENSE.txt
+info/recipe/recipe-scripts-license.txt
+info/licenses/CLI11_LICENSE.txt
+info/recipe/CLI11_LICENSE.txt
+info/recipe/LIBEV_LICENSE.txt
+info/licenses/LIBEV_LICENSE.txt
+info/licenses/LIBARCHIVE_LICENSE.txt
+info/recipe/LIBARCHIVE_LICENSE.txt
+info/recipe/meta.yaml.template
+info/recipe/meta.yaml
+info/licenses/LIBOPENSSL_LICENSE.txt
+info/recipe/LIBOPENSSL_LICENSE.txt
+info/recipe/TL_EXPECTED_LICENSE.txt
+info/licenses/TL_EXPECTED_LICENSE.txt
+info/about.json
+info/recipe/LIBOPENSSL_3_LICENSE.txt
+info/licenses/LIBOPENSSL_3_LICENSE.txt
+info/recipe/SIMDJSON_LICENSE.txt
+info/licenses/KRB5_LICENSE.txt
+info/recipe/KRB5_LICENSE.txt
+info/git
+bin/micromamba
+100 6345k  100 6345k    0     0  2502k      0  0:00:02  0:00:02 --:--:-- 11.4M
+The following argument was not expected: -p
+Run with --help for more information.
+-bash: HISTCONTROL: readonly variable
+-bash: HISTIGNORE: readonly variable
+Queue jobs most recently completed
+     job                            parallel   memory      memory
+  number           job name cores efficiency  request  efficiency
+-------- ------------------ ----- ----------  -------  ----------
+    1432             sra_dl     4     72.62%      8gb     104.86%
+Jobs with a parallel efficiency below 75% should use fewer cores.
+Requesting more resources than needed increases the job wait time in the queue.
+ 
+-bash: micromamba: command not found
+aubfxy001@asaxlogin1:~> # Check the micromamba binary exists
+ls -l $HOME/bin/micromamba
+$HOME/bin/micromamba --version
+
+# Initialize the shell *for this session* (no .bashrc writes)
+eval "$($HOME/bin/micromamba shell hook -s bash -r $HOME/micromamba)"
+-rwxr-xr-x 1 aubfxy001 aubpathbio 17017808 Jul 28 10:39 /home/aubfxy001/bin/micromamba
+2.3.1
+aubfxy001@asaxlogin1:~> micromamba create -y -r $HOME/micromamba -n cbcw2 -c conda-forge -c bioconda \
+  fastqc jellyfish genomescope2 \
+  kraken2 krakentools krona-tools \
+  megahit bowtie2 samtools bcftools \
+  getorganelle mitofinder mafft fasttree
+bioconda/linux-64                                    5.2MB @  11.2MB/s  0.4s
+conda-forge/noarch                                  21.8MB @  27.5MB/s  0.8s
+bioconda/noarch                                      4.9MB @   4.3MB/s  1.0s
+conda-forge/linux-64                                46.0MB @  37.8MB/s  1.2s
+
+error    libmamba Could not solve for environment specs
+    The following packages are incompatible
+    ├─ genomescope2 =* * is installable with the potential options
+    │  ├─ genomescope2 [2.0|2.0.1] would require
+    │  │  └─ python >=3.6 * with the potential options
+    │  │     ├─ python [3.10.0|3.10.1|...|3.10.9] would require
+    │  │     │  └─ python_abi =3.10 *_cp310, which can be installed;
+    │  │     ├─ python [3.10.15|3.10.16|3.10.17|3.10.18] would require
+    │  │     │  ├─ libzlib >=1.3.1,<2.0a0 * with the potential options
+    │  │     │  │  ├─ libzlib 1.3.1 would require
+    │  │     │  │  │  └─ zlib ==1.3.1 *_1, which can be installed;
+    │  │     │  │  ├─ libzlib 1.3.1 would require
+    │  │     │  │  │  └─ zlib ==1.3.1 *_2, which can be installed;
+    │  │     │  │  └─ libzlib 1.3.1 would require
+    │  │     │  │     └─ zlib ==1.3.1 *_0, which can be installed;
+    │  │     │  └─ python_abi =3.10 *_cp310, which can be installed;
+    │  │     ├─ python 3.10.8 would require
+    │  │     │  └─ python_abi =3.10 *_graalpy230_310_native, which can be installed;
+    │  │     ├─ python [3.11.0|3.11.1|...|3.11.9] would require
+    │  │     │  └─ python_abi =3.11 *_cp311, which can be installed;
+    │  │     ├─ python [3.12.0|3.12.1|...|3.12.9] would require
+    │  │     │  └─ python_abi =3.12 *_cp312, which can be installed;
+    │  │     ├─ python [3.13.0|3.13.1|3.13.2|3.13.3|3.13.5] would require
+    │  │     │  ├─ libzlib >=1.3.1,<2.0a0 *, which can be installed (as previously explained);
+    │  │     │  └─ python_abi =3.13 *_cp313t, which can be installed;
+    │  │     ├─ python [3.13.0|3.13.1|3.13.2|3.13.3|3.13.5] would require
+    │  │     │  └─ python_abi =3.13 *_cp313, which can be installed;
+    │  │     ├─ python [3.14.0rc1|3.14.0rc2] would require
+    │  │     │  └─ _python_rc =* *, which does not exist (perhaps a missing channel);
+    │  │     ├─ python [3.8.10|3.8.12|...|3.8.8] would require
+    │  │     │  └─ python_abi =3.8 *_cp38, which can be installed;
+    │  │     ├─ python [3.8.12|3.8.13|3.8.16] would require
+    │  │     │  └─ python_abi ==3.8 *_pypy38_pp73, which can be installed;
+    │  │     ├─ python 3.8.20 would require
+    │  │     │  ├─ libzlib >=1.3.1,<2.0a0 *, which can be installed (as previously explained);
+    │  │     │  └─ python_abi =3.8 *_cp38, which can be installed;
+    │  │     ├─ python 3.8.5 would require
+    │  │     │  └─ python_abi =3.8 *_graalpy223_38_native, which can be installed;
+    │  │     ├─ python [3.9.0|3.9.1|...|3.9.9] would require
+    │  │     │  └─ python_abi =3.9 *_cp39, which can be installed;
+    │  │     ├─ python [3.9.10|3.9.12|3.9.16|3.9.17|3.9.18] would require
+    │  │     │  └─ python_abi ==3.9 *_pypy39_pp73, which can be installed;
+    │  │     ├─ python [3.9.20|3.9.21|3.9.22|3.9.23] would require
+    │  │     │  ├─ libzlib >=1.3.1,<2.0a0 *, which can be installed (as previously explained);
+    │  │     │  └─ python_abi =3.9 *_cp39, which can be installed;
+    │  │     ├─ python [3.6.0|3.6.0a3|...|3.6.7] would require
+    │  │     │  └─ python_abi =* *_cp36m, which can be installed;
+    │  │     ├─ python [3.6.10|3.6.11|...|3.6.9] would require
+    │  │     │  └─ python_abi =3.6 *_cp36m, which can be installed;
+    │  │     ├─ python 3.6.12 would require
+    │  │     │  └─ pypy3.6 =7.3.3 *, which requires
+    │  │     │     └─ python =3.6 *_73_pypy, which can be installed;
+    │  │     ├─ python 3.6.9 would require
+    │  │     │  └─ python_abi ==3.6 *_pypy36_pp73, which can be installed;
+    │  │     ├─ python [3.7.0|3.7.1|3.7.2|3.7.3|3.7.6] would require
+    │  │     │  └─ python_abi =* *_cp37m, which can be installed;
+    │  │     ├─ python [3.7.10|3.7.12|3.7.9] would require
+    │  │     │  └─ python_abi ==3.7 *_pypy37_pp73, which can be installed;
+    │  │     ├─ python [3.7.10|3.7.12|...|3.7.9] would require
+    │  │     │  └─ python_abi =3.7 *_cp37m, which can be installed;
+    │  │     └─ python [3.8.0|3.8.1] would require
+    │  │        └─ python_abi =* *_cp38, which can be installed;
+    │  └─ genomescope2 2.0 would require
+    │     └─ python >=3.2 * with the potential options
+    │        ├─ python [3.10.0|3.10.1|...|3.10.9], which can be installed (as previously explained);
+    │        ├─ python [3.10.15|3.10.16|3.10.17|3.10.18], which can be installed (as previously explained);
+    │        ├─ python 3.10.8, which can be installed (as previously explained);
+    │        ├─ python [3.11.0|3.11.1|...|3.11.9], which can be installed (as previously explained);
+    │        ├─ python [3.12.0|3.12.1|...|3.12.9], which can be installed (as previously explained);
+    │        ├─ python [3.13.0|3.13.1|3.13.2|3.13.3|3.13.5], which can be installed (as previously explained);
+    │        ├─ python [3.13.0|3.13.1|3.13.2|3.13.3|3.13.5], which can be installed (as previously explained);
+    │        ├─ python [3.14.0rc1|3.14.0rc2], which cannot be installed (as previously explained);
+    │        ├─ python [3.8.10|3.8.12|...|3.8.8], which can be installed (as previously explained);
+    │        ├─ python [3.8.12|3.8.13|3.8.16], which can be installed (as previously explained);
+    │        ├─ python 3.8.20, which can be installed (as previously explained);
+    │        ├─ python 3.8.5, which can be installed (as previously explained);
+    │        ├─ python [3.9.0|3.9.1|...|3.9.9], which can be installed (as previously explained);
+    │        ├─ python [3.9.10|3.9.12|3.9.16|3.9.17|3.9.18], which can be installed (as previously explained);
+    │        ├─ python [3.9.20|3.9.21|3.9.22|3.9.23], which can be installed (as previously explained);
+    │        ├─ python [3.6.0|3.6.0a3|...|3.6.7], which can be installed (as previously explained);
+    │        ├─ python [3.6.10|3.6.11|...|3.6.9], which can be installed (as previously explained);
+    │        ├─ python 3.6.12, which can be installed (as previously explained);
+    │        ├─ python 3.6.9, which can be installed (as previously explained);
+    │        ├─ python [3.7.0|3.7.1|3.7.2|3.7.3|3.7.6], which can be installed (as previously explained);
+    │        ├─ python [3.7.10|3.7.12|3.7.9], which can be installed (as previously explained);
+    │        ├─ python [3.7.10|3.7.12|...|3.7.9], which can be installed (as previously explained);
+    │        ├─ python [3.8.0|3.8.1], which can be installed (as previously explained);
+    │        ├─ python 3.4.5 would require
+    │        │  └─ python_abi =* *_cp34m, which can be installed;
+    │        └─ python [3.5.1|3.5.2|3.5.3|3.5.4|3.5.5] would require
+    │           └─ python_abi =* *_cp35m, which can be installed;
+    ├─ getorganelle =* * is installable with the potential options
+    │  ├─ getorganelle 1.6.4 would require
+    │  │  └─ python >3 * with the potential options
+    │  │     ├─ python [3.10.0|3.10.1|...|3.10.9], which can be installed (as previously explained);
+    │  │     ├─ python [3.10.15|3.10.16|3.10.17|3.10.18], which can be installed (as previously explained);
+    │  │     ├─ python 3.10.8, which can be installed (as previously explained);
+    │  │     ├─ python [3.11.0|3.11.1|...|3.11.9], which can be installed (as previously explained);
+    │  │     ├─ python [3.12.0|3.12.1|...|3.12.9], which can be installed (as previously explained);
+    │  │     ├─ python [3.13.0|3.13.1|3.13.2|3.13.3|3.13.5], which can be installed (as previously explained);
+    │  │     ├─ python [3.13.0|3.13.1|3.13.2|3.13.3|3.13.5], which can be installed (as previously explained);
+    │  │     ├─ python [3.14.0rc1|3.14.0rc2], which cannot be installed (as previously explained);
+    │  │     ├─ python [3.8.10|3.8.12|...|3.8.8], which can be installed (as previously explained);
+    │  │     ├─ python [3.8.12|3.8.13|3.8.16], which can be installed (as previously explained);
+    │  │     ├─ python 3.8.20, which can be installed (as previously explained);
+    │  │     ├─ python 3.8.5, which can be installed (as previously explained);
+    │  │     ├─ python [3.9.0|3.9.1|...|3.9.9], which can be installed (as previously explained);
+    │  │     ├─ python [3.9.10|3.9.12|3.9.16|3.9.17|3.9.18], which can be installed (as previously explained);
+    │  │     ├─ python [3.9.20|3.9.21|3.9.22|3.9.23], which can be installed (as previously explained);
+    │  │     ├─ python [3.6.0|3.6.0a3|...|3.6.7], which can be installed (as previously explained);
+    │  │     ├─ python [3.6.10|3.6.11|...|3.6.9], which can be installed (as previously explained);
+    │  │     ├─ python 3.6.12, which can be installed (as previously explained);
+    │  │     ├─ python 3.6.9, which can be installed (as previously explained);
+    │  │     ├─ python [3.7.0|3.7.1|3.7.2|3.7.3|3.7.6], which can be installed (as previously explained);
+    │  │     ├─ python [3.7.10|3.7.12|3.7.9], which can be installed (as previously explained);
+    │  │     ├─ python [3.7.10|3.7.12|...|3.7.9], which can be installed (as previously explained);
+    │  │     ├─ python [3.8.0|3.8.1], which can be installed (as previously explained);
+    │  │     ├─ python 3.4.5, which can be installed (as previously explained);
+    │  │     └─ python [3.5.1|3.5.2|3.5.3|3.5.4|3.5.5], which can be installed (as previously explained);
+    │  ├─ getorganelle [1.6.4|1.7.0|...|1.7.7.0] would require
+    │  │  └─ scipy >=1.3.0 * with the potential options
+    │  │     ├─ scipy [1.10.0|1.10.1|...|1.9.3] would require
+    │  │     │  └─ python_abi =3.10 *_cp310, which can be installed;
+    │  │     ├─ scipy [1.10.0|1.10.1|...|1.9.3] would require
+    │  │     │  └─ python_abi =3.11 *_cp311, which can be installed;
+    │  │     ├─ scipy [1.10.0|1.10.1|...|1.9.3] would require
+    │  │     │  └─ python_abi =3.8 *_cp38, which can be installed;
+    │  │     ├─ scipy [1.10.0|1.10.1|1.8.1] would require
+    │  │     │  └─ python_abi ==3.8 *_pypy38_pp73, which can be installed;
+    │  │     ├─ scipy [1.10.0|1.10.1|...|1.8.1] would require
+    │  │     │  └─ python_abi ==3.9 *_pypy39_pp73, which can be installed;
+    │  │     ├─ scipy [1.10.0|1.10.1|...|1.9.3] would require
+    │  │     │  └─ python_abi =3.9 *_cp39, which can be installed;
+    │  │     ├─ scipy [1.11.3|1.11.4|...|1.16.1] would require
+    │  │     │  └─ python_abi =3.12 *_cp312, which can be installed;
+    │  │     ├─ scipy [1.14.1|1.15.0|...|1.16.1] would require
+    │  │     │  └─ python_abi =3.13 *_cp313, which can be installed;
+    │  │     ├─ scipy [1.15.0|1.15.1|1.15.2|1.16.0|1.16.1] would require
+    │  │     │  └─ python_abi =3.13 *_cp313t, which can be installed;
+    │  │     ├─ scipy [1.3.0|1.3.1|...|1.4.1] would require
+    │  │     │  └─ python_abi =* *_cp36m, which can be installed;
+    │  │     ├─ scipy [1.3.0|1.3.1|...|1.4.1] would require
+    │  │     │  └─ python_abi =* *_cp37m, which can be installed;
+    │  │     ├─ scipy [1.3.2|1.3.3|1.4.0|1.4.1] would require
+    │  │     │  └─ python_abi =* *_cp38, which can be installed;
+    │  │     ├─ scipy [1.4.1|1.5.0|1.5.1|1.5.2|1.5.3] would require
+    │  │     │  └─ python_abi =3.6 *_cp36m, which can be installed;
+    │  │     ├─ scipy [1.4.1|1.5.0|1.5.1|1.5.2|1.5.3] would require
+    │  │     │  └─ python_abi ==3.6 *_pypy36_pp73, which can be installed;
+    │  │     ├─ scipy [1.4.1|1.5.0|...|1.7.3] would require
+    │  │     │  └─ python_abi =3.7 *_cp37m, which can be installed;
+    │  │     └─ scipy [1.6.0|1.6.1|...|1.7.3] would require
+    │  │        └─ python_abi ==3.7 *_pypy37_pp73, which can be installed;
+    │  └─ getorganelle 1.7.7.1 would require
+    │     └─ python >=3.7 * with the potential options
+    │        ├─ python [3.10.0|3.10.1|...|3.10.9], which can be installed (as previously explained);
+    │        ├─ python [3.10.15|3.10.16|3.10.17|3.10.18], which can be installed (as previously explained);
+    │        ├─ python 3.10.8, which can be installed (as previously explained);
+    │        ├─ python [3.11.0|3.11.1|...|3.11.9], which can be installed (as previously explained);
+    │        ├─ python [3.12.0|3.12.1|...|3.12.9], which can be installed (as previously explained);
+    │        ├─ python [3.13.0|3.13.1|3.13.2|3.13.3|3.13.5], which can be installed (as previously explained);
+    │        ├─ python [3.13.0|3.13.1|3.13.2|3.13.3|3.13.5], which can be installed (as previously explained);
+    │        ├─ python [3.14.0rc1|3.14.0rc2], which cannot be installed (as previously explained);
+    │        ├─ python [3.8.10|3.8.12|...|3.8.8], which can be installed (as previously explained);
+    │        ├─ python [3.8.12|3.8.13|3.8.16], which can be installed (as previously explained);
+    │        ├─ python 3.8.20, which can be installed (as previously explained);
+    │        ├─ python 3.8.5, which can be installed (as previously explained);
+    │        ├─ python [3.9.0|3.9.1|...|3.9.9], which can be installed (as previously explained);
+    │        ├─ python [3.9.10|3.9.12|3.9.16|3.9.17|3.9.18], which can be installed (as previously explained);
+    │        ├─ python [3.9.20|3.9.21|3.9.22|3.9.23], which can be installed (as previously explained);
+    │        ├─ python [3.7.0|3.7.1|3.7.2|3.7.3|3.7.6], which can be installed (as previously explained);
+    │        ├─ python [3.7.10|3.7.12|3.7.9], which can be installed (as previously explained);
+    │        ├─ python [3.7.10|3.7.12|...|3.7.9], which can be installed (as previously explained);
+    │        └─ python [3.8.0|3.8.1], which can be installed (as previously explained);
+    ├─ krona-tools =* * does not exist (perhaps a typo or a missing channel);
+    └─ mitofinder =* * is not installable because it requires
+       ├─ python >=2.7,<2.8.0a0 * but there are no viable options
+       │  ├─ python [2.7.12|2.7.13] would require
+       │  │  └─ zlib =1.2 *, which conflicts with any installable versions previously reported;
+       │  ├─ python 2.7.14 would require
+       │  │  └─ zlib ==1.2.8 *, which conflicts with any installable versions previously reported;
+       │  ├─ python [2.7.14|2.7.15] would require
+       │  │  └─ zlib [=1.2.11 *|==1.2.11 *], which conflicts with any installable versions previously reported;
+       │  └─ python 2.7.15 would require
+       │     └─ zlib >=1.2.11,<1.3.0a0 *, which conflicts with any installable versions previously reported;
+       └─ python_abi =2.7 *_cp27mu, which conflicts with any installable versions previously reported.
+critical libmamba Could not solve for environment specs
+aubfxy001@asaxlogin1:~> eval "$($HOME/bin/micromamba shell hook -s bash -r $HOME/micromamba)"
+aubfxy001@asaxlogin1:~> micromamba create -y -r $HOME/micromamba -n cbcw2-core -c conda-forge -c bioconda \
+  python=3.10 \
+  fastqc jellyfish genomescope2 \
+  kraken2 krakentools krona \
+  megahit bowtie2 samtools bcftools \
+  mafft fasttree blast seqtk
+conda-forge/linux-64                                        Using cache
+conda-forge/noarch                                          Using cache
+bioconda/linux-64                                           Using cache
+bioconda/noarch                                             Using cache
+
+
+Transaction
+
+  Prefix: /home/aubfxy001/micromamba/envs/cbcw2-core
+
+  Updating specs:
+
+   - python=3.10
+   - fastqc
+   - jellyfish
+   - genomescope2
+   - kraken2
+   - krakentools
+   - krona
+   - megahit
+   - bowtie2
+   - samtools
+   - bcftools
+   - mafft
+   - fasttree
+   - blast
+   - seqtk
+
+
+  Package                           Version  Build                 Channel          Size
+──────────────────────────────────────────────────────────────────────────────────────────
+  Install:
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex                       0.1  conda_forge           conda-forge       3kB
+  + _openmp_mutex                       4.5  2_gnu                 conda-forge      24kB
+  + _r-mutex                          1.0.1  anacondar_1           conda-forge       4kB
+  + alsa-lib                         1.2.14  hb9d3cd8_0            conda-forge     567kB
+  + bcftools                           1.22  h3a4d415_1            bioconda          1MB
+  + binutils_impl_linux-64             2.44  h4bf12b8_1            conda-forge       4MB
+  + biopython                          1.85  py310ha75aee5_1       conda-forge       3MB
+  + blast                            2.17.0  h66d330f_0            bioconda         85MB
+  + bowtie2                           2.5.4  he96a11b_6            bioconda         15MB
+  + bwidget                          1.10.1  ha770c72_1            conda-forge     130kB
+  + bzip2                             1.0.8  h4bc722e_7            conda-forge     253kB
+  + c-ares                           1.34.5  hb9d3cd8_0            conda-forge     207kB
+  + ca-certificates                2025.8.3  hbd8a1cb_0            conda-forge     154kB
+  + cairo                            1.18.4  h3394656_0            conda-forge     978kB
+  + curl                             8.14.1  h332b0f4_0            conda-forge     180kB
+  + entrez-direct                      24.0  he881be0_0            bioconda         17MB
+  + fastqc                           0.12.1  hdfd78af_0            bioconda         12MB
+  + fasttree                         2.1.11  h7b50bb2_5            bioconda        275kB
+  + font-ttf-dejavu-sans-mono          2.37  hab24e00_0            conda-forge     397kB
+  + font-ttf-inconsolata              3.000  h77eed37_0            conda-forge      97kB
+  + font-ttf-source-code-pro          2.038  h77eed37_0            conda-forge     701kB
+  + font-ttf-ubuntu                    0.83  h77eed37_3            conda-forge       2MB
+  + fontconfig                       2.15.0  h7e30c49_1            conda-forge     266kB
+  + fonts-conda-ecosystem                 1  0                     conda-forge       4kB
+  + fonts-conda-forge                     1  0                     conda-forge       4kB
+  + freetype                         2.13.3  ha770c72_1            conda-forge     172kB
+  + fribidi                          1.0.10  h36c2ea0_0            conda-forge     114kB
+  + gawk                              5.3.1  hcd3d067_0            conda-forge       1MB
+  + gcc_impl_linux-64                15.1.0  h4393ad2_4            conda-forge      77MB
+  + genomescope2                      2.0.1  py313r44hdfd78af_1    bioconda        370kB
+  + gfortran_impl_linux-64           15.1.0  h3b9cdf2_4            conda-forge      18MB
+  + giflib                            5.2.2  hd590300_0            conda-forge      77kB
+  + gmp                               6.3.0  hac33072_2            conda-forge     460kB
+  + graphite2                        1.3.14  hecca717_2            conda-forge     100kB
+  + gsl                                 2.7  he838d99_0            conda-forge       3MB
+  + gxx_impl_linux-64                15.1.0  h6a1bac1_4            conda-forge      16MB
+  + harfbuzz                         11.4.3  h15599e2_0            conda-forge       2MB
+  + htslib                           1.22.1  h566b1c6_0            bioconda          3MB
+  + icu                                75.1  he02047a_0            conda-forge      12MB
+  + jellyfish                         1.1.3  py310h505e2c1_0       conda-forge     312kB
+  + kernel-headers_linux-64          5.14.0  he073ed8_2            conda-forge       1MB
+  + keyutils                          1.6.3  hb9d3cd8_0            conda-forge     134kB
+  + kraken2                            2.14  pl5321h077b44d_0      bioconda          3MB
+  + krakentools                       1.2.1  pyh7e72e81_0          bioconda         37kB
+  + krb5                             1.21.3  h659f571_0            conda-forge       1MB
+  + krona                             2.8.1  pl5321hdfd78af_1      bioconda        158kB
+  + lcms2                              2.17  h717163a_0            conda-forge     248kB
+  + ld_impl_linux-64                   2.44  h1423503_1            conda-forge     676kB
+  + lerc                              4.0.0  h0aef613_1            conda-forge     264kB
+  + libasprintf                      0.25.1  h3f43e3d_1            conda-forge      54kB
+  + libblas                           3.9.0  34_h59b9bed_openblas  conda-forge      19kB
+  + libcblas                          3.9.0  34_he106b2a_openblas  conda-forge      19kB
+  + libcups                           2.3.3  hb8b1518_5            conda-forge       5MB
+  + libcurl                          8.14.1  h332b0f4_0            conda-forge     450kB
+  + libdeflate                         1.24  h86f0d12_0            conda-forge      73kB
+  + libedit                    3.1.20250104  pl5321h7949ede_0      conda-forge     135kB
+  + libev                              4.33  hd590300_2            conda-forge     113kB
+  + libexpat                          2.7.1  hecca717_0            conda-forge      75kB
+  + libffi                            3.4.6  h2dba641_1            conda-forge      57kB
+  + libfreetype                      2.13.3  ha770c72_1            conda-forge       8kB
+  + libfreetype6                     2.13.3  h48d6fc4_1            conda-forge     380kB
+  + libgcc                           15.1.0  h767d61c_4            conda-forge     824kB
+  + libgcc-devel_linux-64            15.1.0  h4c094af_104          conda-forge       3MB
+  + libgcc-ng                        15.1.0  h69a702a_4            conda-forge      29kB
+  + libgettextpo                     0.25.1  h3f43e3d_1            conda-forge     188kB
+  + libgfortran                      15.1.0  h69a702a_4            conda-forge      29kB
+  + libgfortran-ng                   15.1.0  h69a702a_4            conda-forge      29kB
+  + libgfortran5                     15.1.0  hcea5267_4            conda-forge       2MB
+  + libglib                          2.84.3  hf39c6af_0            conda-forge       4MB
+  + libgomp                          15.1.0  h767d61c_4            conda-forge     447kB
+  + libiconv                           1.18  h3b78370_2            conda-forge     790kB
+  + libidn2                           2.3.8  ha4ef2c3_0            conda-forge     138kB
+  + libjpeg-turbo                     3.1.0  hb9d3cd8_0            conda-forge     629kB
+  + liblapack                         3.9.0  34_h7ac8fdf_openblas  conda-forge      19kB
+  + liblzma                           5.8.1  hb9d3cd8_2            conda-forge     113kB
+  + libnghttp2                       1.64.0  h161d5f1_0            conda-forge     648kB
+  + libnsl                            2.0.1  hb9d3cd8_1            conda-forge      34kB
+  + libopenblas                      0.3.30  pthreads_h94d23a6_2   conda-forge       6MB
+  + libpng                           1.6.50  h421ea60_1            conda-forge     317kB
+  + libsanitizer                     15.1.0  h97b714f_4            conda-forge       5MB
+  + libsqlite                        3.50.4  h0c1763c_0            conda-forge     933kB
+  + libssh2                          1.11.1  hcf80075_0            conda-forge     305kB
+  + libstdcxx                        15.1.0  h8f9b012_4            conda-forge       4MB
+  + libstdcxx-devel_linux-64         15.1.0  h4c094af_104          conda-forge      14MB
+  + libstdcxx-ng                     15.1.0  h4852527_4            conda-forge      29kB
+  + libtiff                           4.7.0  h8261f1e_6            conda-forge     433kB
+  + libunistring                     0.9.10  h7f98852_0            conda-forge       1MB
+  + libuuid                          2.38.1  h0b41bf4_0            conda-forge      34kB
+  + libwebp-base                      1.6.0  hd42ef1d_0            conda-forge     429kB
+  + libxcb                           1.17.0  h8a09558_0            conda-forge     396kB
+  + libxcrypt                        4.4.36  hd590300_1            conda-forge     100kB
+  + libzlib                           1.3.1  hb9d3cd8_2            conda-forge      61kB
+  + lz4-c                            1.10.0  h5888daf_1            conda-forge     167kB
+  + mafft                             7.526  h4bc722e_0            conda-forge       3MB
+  + make                              4.4.1  hb9d3cd8_2            conda-forge     513kB
+  + megahit                           1.2.9  haf24da9_8            bioconda          3MB
+  + mpfr                              4.2.1  h90cbb55_3            conda-forge     635kB
+  + ncbi-vdb                          3.2.1  h9948957_0            bioconda         11MB
+  + ncurses                             6.5  h2d0b736_3            conda-forge     892kB
+  + numpy                             2.2.6  py310hefbff90_0       conda-forge       8MB
+  + openjdk                          23.0.2  h53dfc1b_2            conda-forge     190MB
+  + openssl                           3.5.2  h26f9b46_0            conda-forge       3MB
+  + pango                            1.56.4  hadf4263_0            conda-forge     455kB
+  + pcre2                             10.45  hc749103_0            conda-forge       1MB
+  + perl                             5.32.1  7_hd590300_perl5      conda-forge      13MB
+  + perl-archive-tar                   3.04  pl5321hdfd78af_0      bioconda         35kB
+  + perl-carp                          1.50  pl5321hd8ed1ab_0      conda-forge      22kB
+  + perl-common-sense                  3.75  pl5321hd8ed1ab_0      conda-forge      20kB
+  + perl-compress-raw-bzip2           2.213  pl5321hda65f42_0      conda-forge      55kB
+  + perl-compress-raw-zlib            2.202  pl5321hadc24fc_0      conda-forge      80kB
+  + perl-encode                        3.21  pl5321hb9d3cd8_1      conda-forge       2MB
+  + perl-exporter                      5.74  pl5321hd8ed1ab_0      conda-forge      19kB
+  + perl-exporter-tiny             1.002002  pl5321hd8ed1ab_0      conda-forge      29kB
+  + perl-extutils-makemaker            7.70  pl5321hd8ed1ab_0      conda-forge     157kB
+  + perl-io-compress                  2.201  pl5321h503566f_5      bioconda         87kB
+  + perl-io-zlib                       1.15  pl5321hdfd78af_1      bioconda         13kB
+  + perl-json                          4.10  pl5321hdfd78af_1      bioconda         58kB
+  + perl-json-xs                       4.03  pl5321h9948957_4      bioconda         75kB
+  + perl-list-moreutils               0.430  pl5321hdfd78af_0      bioconda         32kB
+  + perl-list-moreutils-xs            0.430  pl5321h7b50bb2_5      bioconda         52kB
+  + perl-parent                       0.243  pl5321hd8ed1ab_0      conda-forge      14kB
+  + perl-pathtools                     3.75  pl5321hb9d3cd8_2      conda-forge      51kB
+  + perl-scalar-list-utils             1.70  pl5321hb03c661_0      conda-forge      52kB
+  + perl-storable                      3.15  pl5321hb9d3cd8_2      conda-forge      71kB
+  + perl-types-serialiser              1.01  pl5321hdfd78af_0      bioconda         13kB
+  + pip                                25.2  pyh8b19718_0          conda-forge       1MB
+  + pixman                           0.46.4  h54a6638_1            conda-forge     451kB
+  + popt                               1.16  h0b475e3_2002         conda-forge     189kB
+  + pthread-stubs                       0.4  hb9d3cd8_1002         conda-forge       8kB
+  + python                          3.10.18  hd6af730_0_cpython    conda-forge      25MB
+  + python_abi                         3.10  8_cp310               conda-forge       7kB
+  + r-argparse                        2.2.5  r44hc72bb7e_0         conda-forge     155kB
+  + r-base                            4.4.3  h85845a0_2            conda-forge      27MB
+  + r-findpython                      1.0.9  r44hc72bb7e_0         conda-forge      31kB
+  + r-jsonlite                        2.0.0  r44h2b5f3a1_0         conda-forge     638kB
+  + r-minpack.lm                      1.2_4  r44hc2011d3_1         conda-forge     115kB
+  + r-r6                              2.6.1  r44hc72bb7e_0         conda-forge      95kB
+  + readline                            8.2  h8c095d6_2            conda-forge     282kB
+  + rsync                             3.4.1  h81c0278_2            conda-forge     334kB
+  + samtools                         1.22.1  h96c455f_0            bioconda        499kB
+  + scipy                            1.15.2  py310h1d65ade_0       conda-forge      16MB
+  + sed                                 4.9  h6688a6e_0            conda-forge     229kB
+  + seqtk                               1.5  h577a1d6_1            bioconda        142kB
+  + setuptools                       80.9.0  pyhff2d567_0          conda-forge     749kB
+  + sysroot_linux-64                   2.34  h087de78_2            conda-forge      40MB
+  + tar                                1.35  h3b78370_0            conda-forge     779kB
+  + tk                               8.6.13  noxft_hd72426e_102    conda-forge       3MB
+  + tktable                            2.10  h8d826fa_7            conda-forge      92kB
+  + tzdata                            2025b  h78e105d_0            conda-forge     123kB
+  + wget                             1.21.4  hda4d442_0            conda-forge     770kB
+  + wheel                            0.45.1  pyhd8ed1ab_1          conda-forge      63kB
+  + xorg-libice                       1.1.2  hb9d3cd8_0            conda-forge      59kB
+  + xorg-libsm                        1.2.6  he73a12e_0            conda-forge      28kB
+  + xorg-libx11                      1.8.12  h4f16b4b_0            conda-forge     836kB
+  + xorg-libxau                      1.0.12  hb9d3cd8_0            conda-forge      15kB
+  + xorg-libxdmcp                     1.1.5  hb9d3cd8_0            conda-forge      20kB
+  + xorg-libxext                      1.3.6  hb9d3cd8_0            conda-forge      50kB
+  + xorg-libxfixes                    6.0.1  hb9d3cd8_0            conda-forge      20kB
+  + xorg-libxi                        1.8.2  hb9d3cd8_0            conda-forge      47kB
+  + xorg-libxrandr                    1.5.4  hb9d3cd8_0            conda-forge      30kB
+  + xorg-libxrender                  0.9.12  hb9d3cd8_0            conda-forge      33kB
+  + xorg-libxt                        1.3.1  hb9d3cd8_0            conda-forge     380kB
+  + xorg-libxtst                      1.2.5  hb9d3cd8_3            conda-forge      33kB
+  + xxhash                            0.8.3  hb47aa4a_0            conda-forge     108kB
+  + zlib                              1.3.1  hb9d3cd8_2            conda-forge      92kB
+  + zstd                              1.5.7  hb8e6e7a_2            conda-forge     568kB
+
+  Summary:
+
+  Install: 166 packages
+
+  Total download: 696MB
+
+──────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+Transaction starting
+r-base                                              27.1MB @  21.5MB/s  1.1s
+sysroot_linux-64                                    39.8MB @  26.7MB/s  1.5s
+python                                              25.0MB @  33.1MB/s  0.8s
+gfortran_impl_linux-64                              18.3MB @  49.2MB/s  0.4s
+blast                                               84.8MB @  40.1MB/s  2.1s
+gcc_impl_linux-64                                   77.3MB @  34.7MB/s  2.1s
+scipy                                               16.4MB @  25.3MB/s  0.7s
+entrez-direct                                       17.1MB @  25.3MB/s  0.7s
+bowtie2                                             15.0MB @  24.7MB/s  0.6s
+gxx_impl_linux-64                                   16.3MB @  22.5MB/s  0.7s
+perl                                                13.3MB @  29.6MB/s  0.4s
+libstdcxx-devel_linux-64                            14.4MB @  29.0MB/s  0.5s
+fastqc                                              11.7MB @  22.4MB/s  0.5s
+icu                                                 12.1MB @  23.7MB/s  0.5s
+numpy                                                7.9MB @  22.5MB/s  0.3s
+ncbi-vdb                                            11.1MB @  28.7MB/s  0.4s
+libglib                                              4.0MB @  14.7MB/s  0.3s
+libcups                                              4.5MB @  12.3MB/s  0.3s
+libsanitizer                                         5.1MB @  13.8MB/s  0.4s
+libopenblas                                          5.9MB @  13.2MB/s  0.4s
+kraken2                                              3.4MB @   2.8MB/s  0.4s
+gsl                                                  3.4MB @   5.5MB/s  0.3s
+libstdcxx                                            3.9MB @   6.0MB/s  0.4s
+binutils_impl_linux-64                               3.8MB @   9.9MB/s  0.4s
+megahit                                              3.3MB @  12.6MB/s  0.2s
+tk                                                   3.3MB @   6.3MB/s  0.2s
+openssl                                              3.1MB @  12.4MB/s  0.2s
+htslib                                               3.3MB @  14.1MB/s  0.2s
+harfbuzz                                             2.1MB @   2.6MB/s  0.2s
+biopython                                            2.9MB @   9.9MB/s  0.3s
+mafft                                                2.6MB @   9.5MB/s  0.3s
+libgcc-devel_linux-64                                2.7MB @   9.1MB/s  0.3s
+perl-encode                                          1.7MB @   5.3MB/s  0.3s
+libunistring                                         1.4MB @   3.3MB/s  0.2s
+font-ttf-ubuntu                                      1.6MB @   6.7MB/s  0.3s
+libgfortran5                                         1.6MB @   5.9MB/s  0.3s
+kernel-headers_linux-64                              1.4MB @   3.9MB/s  0.3s
+gawk                                                 1.2MB @   3.2MB/s  0.2s
+krb5                                                 1.4MB @   3.0MB/s  0.3s
+pcre2                                                1.2MB @   2.4MB/s  0.3s
+bcftools                                             1.1MB @   4.0MB/s  0.2s
+libsqlite                                          932.6kB @   2.7MB/s  0.2s
+openjdk                                            190.2MB @  35.9MB/s  5.3s
+cairo                                              978.1kB @   5.4MB/s  0.3s
+pip                                                  1.2MB @   4.2MB/s  0.3s
+xorg-libx11                                        835.9kB @   2.8MB/s  0.3s
+ncurses                                            891.6kB @   2.6MB/s  0.3s
+libiconv                                           790.2kB @   2.2MB/s  0.3s
+tar                                                778.6kB @   2.4MB/s  0.3s
+libgcc                                             824.2kB @   2.9MB/s  0.3s
+wget                                               770.4kB @   2.6MB/s  0.3s
+setuptools                                         748.8kB @   2.9MB/s  0.3s
+font-ttf-source-code-pro                           700.8kB @   2.7MB/s  0.3s
+ld_impl_linux-64                                   676.0kB @   2.2MB/s  0.3s
+libnghttp2                                         647.6kB @   2.1MB/s  0.3s
+r-jsonlite                                         638.4kB @   2.4MB/s  0.3s
+mpfr                                               634.8kB @   2.3MB/s  0.3s
+libjpeg-turbo                                      628.9kB @   2.2MB/s  0.3s
+zstd                                               567.6kB @   1.7MB/s  0.3s
+alsa-lib                                           566.5kB @   1.6MB/s  0.3s
+samtools                                           499.3kB @  ??.?MB/s  0.1s
+make                                               513.1kB @   4.2MB/s  0.1s
+gmp                                                460.1kB @   1.3MB/s  0.2s
+pango                                              455.4kB @   1.2MB/s  0.2s
+libcurl                                            449.9kB @  ??.?MB/s  0.1s
+libgomp                                            447.3kB @   2.3MB/s  0.3s
+libwebp-base                                       429.0kB @   1.9MB/s  0.2s
+pixman                                             451.0kB @   1.1MB/s  0.4s
+libtiff                                            433.1kB @   1.5MB/s  0.3s
+font-ttf-dejavu-sans-mono                          397.4kB @   1.7MB/s  0.2s
+libfreetype6                                       380.1kB @  ??.?MB/s  0.1s
+libxcb                                             395.9kB @  ??.?MB/s  0.1s
+rsync                                              334.0kB @  ??.?MB/s  0.1s
+genomescope2                                       370.2kB @  ??.?MB/s  0.1s
+xorg-libxt                                         379.7kB @   1.4MB/s  0.2s
+libpng                                             317.4kB @   3.0MB/s  0.1s
+jellyfish                                          312.0kB @  ??.?MB/s  0.1s
+libssh2                                            304.8kB @   2.6MB/s  0.1s
+readline                                           282.5kB @   2.4MB/s  0.1s
+fasttree                                           275.5kB @   1.4MB/s  0.1s
+fontconfig                                         265.6kB @  ??.?MB/s  0.1s
+lerc                                               264.2kB @  ??.?MB/s  0.1s
+lcms2                                              248.0kB @   2.2MB/s  0.1s
+sed                                                228.9kB @   2.0MB/s  0.1s
+bzip2                                              252.8kB @   1.3MB/s  0.2s
+c-ares                                             206.9kB @  ??.?MB/s  0.1s
+popt                                               188.8kB @  ??.?MB/s  0.1s
+freetype                                           172.4kB @  ??.?MB/s  0.1s
+lz4-c                                              167.1kB @  ??.?MB/s  0.1s
+libgettextpo                                       188.3kB @  ??.?MB/s  0.1s
+curl                                               180.3kB @  ??.?MB/s  0.1s
+krona                                              158.5kB @  ??.?MB/s  0.1s
+perl-extutils-makemaker                            157.3kB @  ??.?MB/s  0.1s
+r-argparse                                         155.2kB @  ??.?MB/s  0.1s
+libidn2                                            137.7kB @  ??.?MB/s  0.1s
+ca-certificates                                    154.4kB @  ??.?MB/s  0.2s
+libedit                                            134.7kB @  ??.?MB/s  0.1s
+seqtk                                              141.8kB @  ??.?MB/s  0.1s
+keyutils                                           134.1kB @  ??.?MB/s  0.1s
+bwidget                                            129.6kB @  ??.?MB/s  0.1s
+tzdata                                             123.0kB @  ??.?MB/s  0.1s
+fribidi                                            114.4kB @  ??.?MB/s  0.1s
+r-minpack.lm                                       115.2kB @  ??.?MB/s  0.1s
+liblzma                                            112.9kB @  ??.?MB/s  0.1s
+libev                                              112.8kB @  ??.?MB/s  0.1s
+libxcrypt                                          100.4kB @   1.6MB/s  0.1s
+xxhash                                             108.2kB @  ??.?MB/s  0.1s
+font-ttf-inconsolata                                96.5kB @  ??.?MB/s  0.1s
+graphite2                                           99.6kB @  ??.?MB/s  0.1s
+r-r6                                                94.6kB @  ??.?MB/s  0.1s
+tktable                                             92.3kB @  ??.?MB/s  0.1s
+zlib                                                92.3kB @  ??.?MB/s  0.1s
+perl-io-compress                                    86.8kB @  ??.?MB/s  0.1s
+perl-compress-raw-zlib                              80.1kB @ 797.6kB/s  0.1s
+libexpat                                            74.8kB @   1.0MB/s  0.1s
+perl-json-xs                                        74.8kB @  ??.?MB/s  0.1s
+giflib                                              77.2kB @  ??.?MB/s  0.1s
+libdeflate                                          72.6kB @  ??.?MB/s  0.1s
+perl-storable                                       71.5kB @  ??.?MB/s  0.1s
+wheel                                               62.9kB @  ??.?MB/s  0.1s
+libzlib                                             61.0kB @  ??.?MB/s  0.1s
+xorg-libice                                         58.6kB @  ??.?MB/s  0.1s
+perl-json                                           57.7kB @  ??.?MB/s  0.1s
+perl-scalar-list-utils                              52.0kB @  ??.?MB/s  0.1s
+libffi                                              57.4kB @  ??.?MB/s  0.1s
+perl-compress-raw-bzip2                             55.4kB @  ??.?MB/s  0.1s
+libasprintf                                         53.6kB @  ??.?MB/s  0.1s
+perl-list-moreutils-xs                              51.5kB @  ??.?MB/s  0.1s
+perl-pathtools                                      50.7kB @  ??.?MB/s  0.1s
+xorg-libxext                                        50.1kB @  ??.?MB/s  0.1s
+xorg-libxi                                          47.2kB @  ??.?MB/s  0.1s
+perl-archive-tar                                    35.2kB @  ??.?MB/s  0.1s
+libnsl                                              33.7kB @  ??.?MB/s  0.1s
+libuuid                                             33.6kB @  ??.?MB/s  0.1s
+krakentools                                         37.3kB @  ??.?MB/s  0.1s
+xorg-libxrender                                     33.0kB @  ??.?MB/s  0.1s
+xorg-libxtst                                        32.8kB @  ??.?MB/s  0.1s
+xorg-libxrandr                                      29.6kB @  ??.?MB/s  0.1s
+r-findpython                                        30.5kB @  ??.?MB/s  0.1s
+perl-list-moreutils                                 32.5kB @  ??.?MB/s  0.1s
+libstdcxx-ng                                        29.3kB @  ??.?MB/s  0.1s
+libgfortran-ng                                      29.3kB @  ??.?MB/s  0.1s
+libgcc-ng                                           29.2kB @  ??.?MB/s  0.1s
+libgfortran                                         29.2kB @  ??.?MB/s  0.1s
+perl-carp                                           22.3kB @  ??.?MB/s  0.1s
+xorg-libsm                                          27.6kB @  ??.?MB/s  0.1s
+_openmp_mutex                                       23.6kB @  ??.?MB/s  0.1s
+perl-exporter-tiny                                  28.6kB @  ??.?MB/s  0.1s
+perl-common-sense                                   20.3kB @  ??.?MB/s  0.1s
+liblapack                                           19.3kB @  ??.?MB/s  0.1s
+xorg-libxfixes                                      19.6kB @  ??.?MB/s  0.1s
+xorg-libxdmcp                                       19.9kB @  ??.?MB/s  0.1s
+libcblas                                            19.3kB @  ??.?MB/s  0.1s
+libblas                                             19.3kB @  ??.?MB/s  0.1s
+xorg-libxau                                         14.8kB @  ??.?MB/s  0.1s
+perl-exporter                                       19.1kB @  ??.?MB/s  0.1s
+perl-types-serialiser                               13.1kB @  ??.?MB/s  0.1s
+perl-parent                                         13.9kB @  ??.?MB/s  0.1s
+perl-io-zlib                                        12.8kB @  ??.?MB/s  0.1s
+libfreetype                                          7.7kB @  ??.?MB/s  0.1s
+python_abi                                           7.0kB @  ??.?MB/s  0.1s
+fonts-conda-forge                                    4.1kB @  ??.?MB/s  0.1s
+fonts-conda-ecosystem                                3.7kB @  46.4kB/s  0.1s
+pthread-stubs                                        8.3kB @  69.8kB/s  0.1s
+_r-mutex                                             3.6kB @  46.4kB/s  0.1s
+_libgcc_mutex                                        2.6kB @  ??.?MB/s  0.1s
+Linking font-ttf-dejavu-sans-mono-2.37-hab24e00_0
+Linking font-ttf-ubuntu-0.83-h77eed37_3
+Linking font-ttf-inconsolata-3.000-h77eed37_0
+Linking font-ttf-source-code-pro-2.038-h77eed37_0
+Linking python_abi-3.10-8_cp310
+Linking libgcc-devel_linux-64-15.1.0-h4c094af_104
+Linking libstdcxx-devel_linux-64-15.1.0-h4c094af_104
+Linking _r-mutex-1.0.1-anacondar_1
+Linking tzdata-2025b-h78e105d_0
+Linking ca-certificates-2025.8.3-hbd8a1cb_0
+Linking kernel-headers_linux-64-5.14.0-he073ed8_2
+Linking fonts-conda-forge-1-0
+Linking sysroot_linux-64-2.34-h087de78_2
+Linking fonts-conda-ecosystem-1-0
+Linking libgomp-15.1.0-h767d61c_4
+Linking _libgcc_mutex-0.1-conda_forge
+Linking ld_impl_linux-64-2.44-h1423503_1
+Linking _openmp_mutex-4.5-2_gnu
+Linking binutils_impl_linux-64-2.44-h4bf12b8_1
+Linking libgcc-15.1.0-h767d61c_4
+Linking xxhash-0.8.3-hb47aa4a_0
+Linking keyutils-1.6.3-hb9d3cd8_0
+Linking c-ares-1.34.5-hb9d3cd8_0
+Linking xorg-libxdmcp-1.1.5-hb9d3cd8_0
+Linking xorg-libxau-1.0.12-hb9d3cd8_0
+Linking pthread-stubs-0.4-hb9d3cd8_1002
+Linking alsa-lib-1.2.14-hb9d3cd8_0
+Linking libnsl-2.0.1-hb9d3cd8_1
+Linking libffi-3.4.6-h2dba641_1
+Linking sed-4.9-h6688a6e_0
+Linking make-4.4.1-hb9d3cd8_2
+Linking libwebp-base-1.6.0-hd42ef1d_0
+Linking libexpat-2.7.1-hecca717_0
+Linking libgfortran5-15.1.0-hcea5267_4
+Linking libiconv-1.18-h3b78370_2
+Linking openssl-3.5.2-h26f9b46_0
+Linking liblzma-5.8.1-hb9d3cd8_2
+Linking ncurses-6.5-h2d0b736_3
+Linking libzlib-1.3.1-hb9d3cd8_2
+Linking libstdcxx-15.1.0-h8f9b012_4
+Linking libgcc-ng-15.1.0-h69a702a_4
+Linking xorg-libice-1.1.2-hb9d3cd8_0
+Linking libjpeg-turbo-3.1.0-hb9d3cd8_0
+Linking libdeflate-1.24-h86f0d12_0
+Linking libxcb-1.17.0-h8a09558_0
+Linking libgfortran-15.1.0-h69a702a_4
+Linking libgettextpo-0.25.1-h3f43e3d_1
+Linking tar-1.35-h3b78370_0
+Linking libedit-3.1.20250104-pl5321h7949ede_0
+Linking readline-8.2-h8c095d6_2
+Linking libssh2-1.11.1-hcf80075_0
+Linking libsqlite-3.50.4-h0c1763c_0
+Linking tk-8.6.13-noxft_hd72426e_102
+Linking libpng-1.6.50-h421ea60_1
+Linking zlib-1.3.1-hb9d3cd8_2
+Linking pixman-0.46.4-h54a6638_1
+Linking graphite2-1.3.14-hecca717_2
+Linking libasprintf-0.25.1-h3f43e3d_1
+Linking lerc-4.0.0-h0aef613_1
+Linking libstdcxx-ng-15.1.0-h4852527_4
+Linking libsanitizer-15.1.0-h97b714f_4
+Linking lz4-c-1.10.0-h5888daf_1
+Linking zstd-1.5.7-hb8e6e7a_2
+Linking fribidi-1.0.10-h36c2ea0_0
+Linking popt-1.16-h0b475e3_2002
+Linking libunistring-0.9.10-h7f98852_0
+Linking libev-4.33-hd590300_2
+Linking libxcrypt-4.4.36-hd590300_1
+Linking bzip2-1.0.8-h4bc722e_7
+Linking giflib-5.2.2-hd590300_0
+Linking libuuid-2.38.1-h0b41bf4_0
+Linking xorg-libx11-1.8.12-h4f16b4b_0
+Linking libopenblas-0.3.30-pthreads_h94d23a6_2
+Linking libgfortran-ng-15.1.0-h69a702a_4
+Linking tktable-2.10-h8d826fa_7
+Linking bwidget-1.10.1-ha770c72_1
+Linking libfreetype6-2.13.3-h48d6fc4_1
+Linking gmp-6.3.0-hac33072_2
+Linking icu-75.1-he02047a_0
+Linking krb5-1.21.3-h659f571_0
+Linking gcc_impl_linux-64-15.1.0-h4393ad2_4
+Linking libtiff-4.7.0-h8261f1e_6
+Linking rsync-3.4.1-h81c0278_2
+Linking libidn2-2.3.8-ha4ef2c3_0
+Linking libnghttp2-1.64.0-h161d5f1_0
+Linking perl-5.32.1-7_hd590300_perl5
+Linking pcre2-10.45-hc749103_0
+Linking xorg-libsm-1.2.6-he73a12e_0
+Linking python-3.10.18-hd6af730_0_cpython
+Linking xorg-libxfixes-6.0.1-hb9d3cd8_0
+Linking xorg-libxrender-0.9.12-hb9d3cd8_0
+Linking xorg-libxext-1.3.6-hb9d3cd8_0
+Linking libblas-3.9.0-34_h59b9bed_openblas
+Linking libfreetype-2.13.3-ha770c72_1
+Linking mpfr-4.2.1-h90cbb55_3
+Linking libcups-2.3.3-hb8b1518_5
+Linking gfortran_impl_linux-64-15.1.0-h3b9cdf2_4
+Linking gxx_impl_linux-64-15.1.0-h6a1bac1_4
+Linking lcms2-2.17-h717163a_0
+Linking wget-1.21.4-hda4d442_0
+Linking libcurl-8.14.1-h332b0f4_0
+Linking perl-compress-raw-zlib-2.202-pl5321hadc24fc_0
+Linking perl-storable-3.15-pl5321hb9d3cd8_2
+Linking perl-scalar-list-utils-1.70-pl5321hb03c661_0
+Linking perl-compress-raw-bzip2-2.213-pl5321hda65f42_0
+Linking libglib-2.84.3-hf39c6af_0
+Linking xorg-libxt-1.3.1-hb9d3cd8_0
+Linking xorg-libxrandr-1.5.4-hb9d3cd8_0
+Linking xorg-libxi-1.8.2-hb9d3cd8_0
+Linking libcblas-3.9.0-34_he106b2a_openblas
+Linking liblapack-3.9.0-34_h7ac8fdf_openblas
+Linking freetype-2.13.3-ha770c72_1
+Linking gawk-5.3.1-hcd3d067_0
+Linking curl-8.14.1-h332b0f4_0
+Linking xorg-libxtst-1.2.5-hb9d3cd8_3
+Linking gsl-2.7-he838d99_0
+Linking fontconfig-2.15.0-h7e30c49_1
+Linking mafft-7.526-h4bc722e_0
+Linking cairo-1.18.4-h3394656_0
+Linking harfbuzz-11.4.3-h15599e2_0
+Linking pango-1.56.4-hadf4263_0
+Linking openjdk-23.0.2-h53dfc1b_2
+Linking r-base-4.4.3-h85845a0_2
+Linking r-jsonlite-2.0.0-r44h2b5f3a1_0
+Linking r-minpack.lm-1.2_4-r44hc2011d3_1
+Linking fasttree-2.1.11-h7b50bb2_5
+Linking seqtk-1.5-h577a1d6_1
+Linking ncbi-vdb-3.2.1-h9948957_0
+Linking perl-list-moreutils-xs-0.430-pl5321h7b50bb2_5
+Linking entrez-direct-24.0-he881be0_0
+Linking htslib-1.22.1-h566b1c6_0
+Linking samtools-1.22.1-h96c455f_0
+Linking bcftools-1.22-h3a4d415_1
+Linking perl-extutils-makemaker-7.70-pl5321hd8ed1ab_0
+Linking perl-exporter-5.74-pl5321hd8ed1ab_0
+Linking perl-parent-0.243-pl5321hd8ed1ab_0
+Linking perl-common-sense-3.75-pl5321hd8ed1ab_0
+Linking perl-exporter-tiny-1.002002-pl5321hd8ed1ab_0
+Linking wheel-0.45.1-pyhd8ed1ab_1
+Linking setuptools-80.9.0-pyhff2d567_0
+Linking r-r6-2.6.1-r44hc72bb7e_0
+Linking r-findpython-1.0.9-r44hc72bb7e_0
+Linking perl-carp-1.50-pl5321hd8ed1ab_0
+Linking pip-25.2-pyh8b19718_0
+Linking r-argparse-2.2.5-r44hc72bb7e_0
+Linking perl-io-zlib-1.15-pl5321hdfd78af_1
+Linking krona-2.8.1-pl5321hdfd78af_1
+
+Krona installed.  You still need to manually update the taxonomy
+databases before Krona can generate taxonomic reports.  The update
+script is ktUpdateTaxonomy.sh.  The default location for storing
+taxonomic databases is /home/aubfxy001/micromamba/envs/cbcw2-core/opt/krona/taxonomy
+
+If you would like the taxonomic data stored elsewhere, simply replace
+this directory with a symlink.  For example:
+
+rm -rf /home/aubfxy001/micromamba/envs/cbcw2-core/opt/krona/taxonomy
+mkdir /path/on/big/disk/taxonomy
+ln -s /path/on/big/disk/taxonomy /home/aubfxy001/micromamba/envs/cbcw2-core/opt/krona/taxonomy
+ktUpdateTaxonomy.sh
+
+
+Linking fastqc-0.12.1-hdfd78af_0
+Linking perl-types-serialiser-1.01-pl5321hdfd78af_0
+Linking perl-list-moreutils-0.430-pl5321hdfd78af_0
+Linking genomescope2-2.0.1-py313r44hdfd78af_1
+Linking perl-encode-3.21-pl5321hb9d3cd8_1
+Linking perl-pathtools-3.75-pl5321hb9d3cd8_2
+Linking numpy-2.2.6-py310hefbff90_0
+Linking jellyfish-1.1.3-py310h505e2c1_0
+Linking scipy-1.15.2-py310h1d65ade_0
+Linking biopython-1.85-py310ha75aee5_1
+Linking megahit-1.2.9-haf24da9_8
+Linking bowtie2-2.5.4-he96a11b_6
+Linking perl-json-xs-4.03-pl5321h9948957_4
+Linking perl-io-compress-2.201-pl5321h503566f_5
+Linking krakentools-1.2.1-pyh7e72e81_0
+Linking perl-json-4.10-pl5321hdfd78af_1
+Linking perl-archive-tar-3.04-pl5321hdfd78af_0
+Linking blast-2.17.0-h66d330f_0
+Linking kraken2-2.14-pl5321h077b44d_0
+
+Transaction finished
+
+
+To activate this environment, use:
+
+    micromamba activate cbcw2-core
+
+Or to execute a single command in this environment, use:
+
+    micromamba run -n cbcw2-core mycommand
+
+aubfxy001@asaxlogin1:~> source /apps/profiles/modules_asax.sh.dyn
+module load sra
+module load fastqc/0.10.1
+aubfxy001@asaxlogin1:~> export MyID="aubfxy001"
+export WD="/scratch/${MyID}/cbc_week2_butterfly"
+export DD="${WD}/RawData"
+export RDQ="${WD}/RawDataQuality"
+mkdir -p "${DD}" "${RDQ}"
+cd "${DD}"
+aubfxy001@asaxlogin1:RawData> vdb-config --interactive
+ok
+
+     SRA configuration                                                                                  
+                                                                                                        
+  [   save   ]    [   exit   ]    [ discard  ]    [ default  ]                                          
+                                                                                                        
+   MAIN      CACHE     AWS       GCP       NET       TOOLS                                              
+                                                                                                        
+   prefetch downloads to                                                                                
+                                                                                                        
+    (*) user-repository                                                                                 
+    ( ) current directory                                                                               
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+  w:104 h:62                                                                                            
+aubfxy001@asaxlogin1:RawData> export MyID="aubfxy001"     # change if needed
+mkdir -p /scratch/${MyID}/ncbi/public
+mkdir -p /scratch/${MyID}/tmp
+aubfxy001@asaxlogin1:RawData> vdb-config --interactive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     SRA configuration                                                                                  
+                                                                                                        
+  [   save   ]    [   exit   ]    [ discard  ]    [ default  ]                                          
+                                                                                                        
+   MAIN      CACHE     AWS       GCP       NET       TOOLS                                              
+                                                                                                        
+   [X] enable local file-caching                                                                        
+                                                                                                        
+  location of user-repository:                                                                          
+   [ choose ]                                                                                           
+                                                                                                        
+   [ clear  ]                                                                                           
+                                                                                                        
+  process-local location:                                                                               
+   [ choose ]                                                                                           
+                                                                                                        
+   [ clear  ]                                                                                           
+                                                                                                        
+  RAM used:     +  0        -   MB                                                                      
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+  w:104 h:62                                                                                            
+aubfxy001@asaxlogin1:RawData> # replace with your ASC ID if different
+export MyID="aubfxy001"
+mkdir -p /scratch/${MyID}/ncbi/public/sra    # cache for .sra files
+mkdir -p /scratch/${MyID}/tmp                # temp area for conversions
+aubfxy001@asaxlogin1:RawData> source /apps/profiles/modules_asax.sh.dyn
+module load sra
+vdb-config --interactive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     SRA configuration                                                                                  
+                                                                                                        
+  [   save   ]    [   exit   ]    [ discard  ]    [ default  ]                                          
+                                                                                                        
+   MAIN      CACHE     AWS       GCP       NET       TOOLS                                              
+                                                                                                        
+   [X] Enable Remote Access                                                                             
+                                                                                                        
+   [ ] Prefer SRA Lite files with simplified base Quality scores                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                                                                        
+   GUID: fd541b10-829a-11f0-9eaa-03cbc101b663                                                           
+                                                                                                        
+                                                                                                        
+ save configuration                                                                                     
+aubfxy001@asaxlogin1:RawData> # 1) Environment & dirs
+source /apps/profiles/modules_asax.sh.dyn
+module load sra
+module load fastqc/0.10.1
+
+export MyID="aubfxy001"
+export WD="/scratch/${MyID}/cbc_week2_butterfly"
+export DD="${WD}/RawData"
+export RDQ="${WD}/RawDataQuality"
+export TMPDIR="/scratch/${MyID}/tmp"     # temp used by many tools
+mkdir -p "${DD}" "${RDQ}" "${TMPDIR}"
+
+# 2) (Optional but best practice) prefetch to scratch (creates .sra in scratch)
+# Replace SRR_AL_BUTTERFLY with your Alabama SRR once you pick it
+prefetch -O "${DD}" SRR25297534
+prefetch -O "${DD}" SRR_AL_BUTTERFLY
+
+# 3a) Convert with fastq-dump (your class template tool)
+cd "${DD}"
+fastq-dump -F --split-files --gzip "${DD}/SRR25297534.sra"
+fastq-dump -F --split-files --gzip "${DD}/SRR_AL_BUTTERFLY.sra"
+
+# 3b) OR (faster) use fasterq-dump if available (respects TMPDIR)
+# fasterq-dump --outdir "${DD}" --temp "${TMPDIR}" --threads 8 SRR25297534
+# fasterq-dump --outdir "${DD}" --temp "${TMPDIR}" --threads 8 SRR_AL_BUTTERFLY
+
+# 4) QC
+fastqc "${DD}"/*.fastq.gz --outdir="${RDQ}"
+
+# 5) Package reports
+cd "${WD}"
+tar czf fastqc_reports.tgz RawDataQuality
+echo "Done. Reports at ${WD}/fastqc_reports.tgz"
+
+2025-08-26T23:03:29 prefetch.3.0.0: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2025-08-26T23:03:29 prefetch.3.0.0: 1) Downloading 'SRR25297534'...
+2025-08-26T23:03:29 prefetch.3.0.0: SRA Normalized Format file is being retrieved, if this is different from your preference, it may be due to current file availability.
+2025-08-26T23:03:29 prefetch.3.0.0:  Downloading via HTTPS...
+2025-08-26T23:04:12 prefetch.3.0.0:  HTTPS download succeed
+2025-08-26T23:04:15 prefetch.3.0.0:  'SRR25297534' is valid
+2025-08-26T23:04:15 prefetch.3.0.0: 1) 'SRR25297534' was downloaded successfully
+2025-08-26T23:04:15 prefetch.3.0.0: 'SRR25297534' has 0 unresolved dependencies
+
+2025-08-26T23:04:17 prefetch.3.0.0 err: name not found while resolving query within virtual file system module - failed to resolve accession 'SRR_AL_BUTTERFLY' - Cannot resolve accession ( 404 )
+2025-08-26T23:04:17 prefetch.3.0.0: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2025-08-26T23:04:18 fastq-dump.3.0.0 err: name not found while resolving query within virtual file system module - failed to resolve accession '/scratch/aubfxy001/cbc_week2_butterfly/RawData/SRR25297534.sra' - Cannot resolve accession ( 404 )
+2025-08-26T23:04:18 fastq-dump.3.0.0 err: item not found while constructing within virtual database module - the path '/scratch/aubfxy001/cbc_week2_butterfly/RawData/SRR25297534.sra' cannot be opened as database or table
+fastq-dump quit with error code 3
+2025-08-26T23:04:18 fastq-dump.3.0.0 err: name not found while resolving query within virtual file system module - failed to resolve accession '/scratch/aubfxy001/cbc_week2_butterfly/RawData/SRR_AL_BUTTERFLY.sra' - Cannot resolve accession ( 404 )
+2025-08-26T23:04:18 fastq-dump.3.0.0 err: item not found while constructing within virtual database module - the path '/scratch/aubfxy001/cbc_week2_butterfly/RawData/SRR_AL_BUTTERFLY.sra' cannot be opened as database or table
+fastq-dump quit with error code 3
+Skipping '/scratch/aubfxy001/cbc_week2_butterfly/RawData/*.fastq.gz' which didn't exist, or couldn't be read
+Done. Reports at /scratch/aubfxy001/cbc_week2_butterfly/fastqc_reports.tgz
+aubfxy001@asaxlogin1:cbc_week2_butterfly> ls
+fastqc_reports.tgz  RawData  RawDataQuality
+aubfxy001@asaxlogin1:cbc_week2_butterfly> cd ..
+aubfxy001@asaxlogin1:aubfxy001> ls
+cbc_w2  cbc_week2  cbc_week2_butterfly  dbs  ncbi  tmp
+aubfxy001@asaxlogin1:aubfxy001> rm -rf -- /scratch/aubfxy001/{cbc_w2,cbc_week2,cbc_week2_butterfly,dbs,ncbi,tmp}
+aubfxy001@asaxlogin1:aubfxy001> ls
+aubfxy001@asaxlogin1:aubfxy001> cd aubfxy001/scratch
+-bash: cd: aubfxy001/scratch: No such file or directory
+aubfxy001@asaxlogin1:aubfxy001> cd /scratch/aubfxy001
+aubfxy001@asaxlogin1:aubfxy001> ls
+aubfxy001@asaxlogin1:aubfxy001> pwd
+/scratch/aubfxy001
+aubfxy001@asaxlogin1:aubfxy001> ls -la
+total 576
+drwxr-xr-x  2 aubfxy001 aubpathbio   4096 Aug 26 18:11 .
+drwxrwxrwx 95 root      root       135168 Aug 26 17:49 ..
+aubfxy001@asaxlogin1:aubfxy001> # Create project directory in scratch
+mkdir -p /scratch/aubfxy001/week2_assignment
+cd /scratch/aubfxy001/week2_assignment
+
+# Create a log file to document everything
+touch log.txt
+echo "Week 2 Assignment Log - Group 3" >> log.txt
+echo "Date: $(date)" >> log.txt
+echo "Research Question: What is the average genomic coverage and are there any notable SNVs in this monarch butterfly sample compared to a reference genome?" >> log.txt
+aubfxy001@asaxlogin1:week2_assignment> # List available modules (optional, to check)
+module avail
+
+# Load SRA Toolkit (common name; if not found, try 'module spider sra' or ask admin)
+module load sra-tools/3.0.0  # Adjust version if needed; use latest available
+
+# Verify it's loaded
+module list >> log.txt
+
+--------- /apps/x86-64/apps/spack_0.19.1/spack/share/spack/lmod/linux-rocky8-x86_64/gcc/11.3.0 ---------
+   alsa-lib/1.2.3.2-j5ves4v                             perl-hash-merge/0.300-h432rpc
+   aocc/3.2.0-alhehvh                                   perl-html-parser/3.72-ljqqoq4
+   apr-util/1.6.1-kx4dlci                      (D)      perl-html-tagset/3.20-36dt22p
+   apr/1.7.0-e6t3zof                           (D)      perl-http-cookies/6.04-aecmsa2
+   argtable/2-13-6cwo4vg                                perl-http-daemon/6.01-4on5bpa
+   aria2/1.36.0-5iqzwlt                        (D)      perl-http-date/6.02-omss56g
+   assimp/5.2.4-7vcgq35                                 perl-http-message/6.13-o6fotg7
+   atompaw/4.2.0.1-chbjcvx                              perl-http-negotiate/6.01-e7qhf54
+   augustus/3.4.0-s7pmnub                               perl-inline-c/0.78-r7g4m3b
+   autoconf-archive/2022.02.11-r4gpo5q                  perl-inline/0.80-hoylebl
+   autoconf/2.69-5mmazze                                perl-io-all/0.87-gvi43xz
+   automake/1.16.5-deu3ucq                              perl-io-html/1.001-w7jaf6i
+   bamtools/2.5.2-of6bbaf                               perl-io-prompt/0.997004-bvcxjau
+   bbmap/38.63-4yvlhly                         (D)      perl-io-string/1.08-sg2uxgc
+   bcftools/1.12-k7x6twj                                perl-io-stringy/2.111-ovntjji
+   bcl2fastq2/2.20.0.422-rweb27v                        perl-io-tty/1.13_01-ztebxeo
+   bdftopcf/1.0.5-r6aikdq                               perl-ipc-run/20180523.0-jpa4ikk
+   beast2/2.6.4-c2itzn6                                 perl-json/2.97001-sgokyqc
+   bedops/2.4.40-2dbe6mq                       (D)      perl-libwww-perl/6.33-zz7db4l
+   bedtools2/2.30.0-bgqoqto                             perl-libxml-perl/0.08-zolbddg
+   berkeley-db/18.1.40-togxbpf                          perl-list-moreutils-xs/0.428-xrueemf
+   binutils/2.38-ycwgge6                                perl-list-moreutils/0.428-wa3earf
+   bioawk/1.0-gwmzr65                                   perl-lwp-mediatypes/6.02-jzumixg
+   bismark/0.23.0-co7pmcq                               perl-mailtools/2.21-4za7x25
+   bison/3.8.2-gbt6rrm                                  perl-mce/1.874-zmwga7v
+   blast-plus/2.12.0-3pg5y67                            perl-module-build-tiny/0.039-ddsbj2a
+   blis/0.9.0-ff7sfvh                                   perl-module-build/0.4224-oz33pmi
+   boost/1.55.0-lsksjte                                 perl-net-http/6.17-cpdbcpc
+   boost/1.56.0-b2zir37                                 perl-parallel-forkmanager/1.19-lfkdydh
+   boost/1.59.0-fksh7f2                                 perl-parse-recdescent/1.967015-kg7gbcf
+   boost/1.68.0-3clg24j                                 perl-path-tiny/0.108-ogbb7xa
+   boost/1.80.0-epcpnpr                                 perl-pegex/0.64-taafdxd
+   boost/1.80.0-f7tk7pe                                 perl-perl-unsafe-signals/0.03-az4r3g6
+   boost/1.80.0-mi35ghp                                 perl-readonly/2.05-fmocsia
+   boost/1.80.0-n6g6ize                                 perl-scalar-list-utils/1.50-pza6tbh
+   boost/1.80.0-raz5xtm                                 perl-set-scalar/1.29-tjtaksf
+   boost/1.80.0-3xrdw2g                        (D)      perl-sub-uplevel/0.2800-7x6kijs
+   bowtie2/2.4.2-cvns32o                                perl-sys-sigaction/0.23-tmtbb5d
+   brunsli/0.1-gupeonv                                  perl-termreadkey/2.38-5qbd3c4
+   bwa/0.7.17-6ipnvdc                                   perl-test-deep/1.127-vktfqx3
+   byacc/20210808-pzvxy7f                               perl-test-differences/0.64-2xzozzp
+   bzip2/1.0.8-ygodoco                         (L)      perl-test-exception/0.43-dktxt32
+   c-ares/1.15.0-dwpq33b                                perl-test-most/0.35-7btgigb
+   ca-certificates-mozilla/2022-10-11-tug3ltk           perl-test-needs/0.002005-vtvr5wd
+   cairo/1.16.0-jwlq2c2                                 perl-test-requiresinternet/0.05-nk2iykf
+   cairo/1.16.0-mqrvwgt                                 perl-test-warn/0.30-3lm7gg3
+   cairo/1.16.0-u7vno4w                                 perl-text-diff/1.45-ewopbja
+   cairo/1.16.0-65aigva                        (D)      perl-text-soundex/3.05-sjsteok
+   cdhit/4.8.1-iem3tur                                  perl-thread-queue/3.13-yeqzdxm
+   clustal-omega/1.2.4-uroplr3                          perl-threads/2.21-zqb6zi6
+   cmake/3.24.3-fzymels                                 perl-time-hires/1.9746-v4coiku
+   cmake/3.24.3-6mjx3ar                                 perl-timedate/2.30-4uzkokp
+   comgr/5.2.3-6fqynq5                                  perl-try-tiny/0.28-554b7pg
+   cpio/2.13-xsy73th                                    perl-uri-encode/1.1.1-q7nqjuc
+   cryptsetup/2.3.5-p5q6n44                             perl-uri/1.72-2woqopd
+   cubelib/4.6-qx46qio                                  perl-want/0.29-bk7qden
+   cubew/4.6-uz37pxm                                    perl-www-robotrules/6.02-wal5aqz
+   curl/7.85.0-b5xm7is                                  perl-xml-dom-xpath/0.14-skbn2sb
+   curl/7.85.0-laj4b6k                                  perl-xml-dom/1.46-3wftb2e
+Lmod has detected the following error:  These module(s) or extension(s) exist but cannot be
+loaded as requested: "sra-tools/3.0.0"
+   Try: "module spider sra-tools/3.0.0" to see how to load the module(s).
+
+
+
+
+Currently Loaded Modules:
+  1) sratoolkit/3.0.0-mxcpa5u   8) ncurses/6.3-jucvtgr     15) libtirpc/1.2.6-nlxe37z
+  2) sra/3.0.0                  9) pigz/2.7-pgxannr        16) rpcsvc-proto/1.4.3-pwkr3wy
+  3) bzip2/1.0.8-ygodoco       10) zstd/1.4.5-t56zdnm      17) libnsl/1.2.0-ghznz6d
+  4) libiconv/1.16-wm65fks     11) tar/1.34-pzyd2rw        18) java/1.7.0_17
+  5) xz/5.2.7-qblhqq6          12) gettext/0.21.1-6tstvme  19) fastqc/0.10.1
+  6) zlib/1.2.13-7o67wyh       13) openssl/1.1.1s-ynretgf
+  7) libxml2/2.10.1-pf57z3a    14) krb5/1.19.3-whyhais
+
+ 
+
+aubfxy001@asaxlogin1:week2_assignment> # Ensure you're in the project directory
+cd /scratch/aubfxy001/week2_assignment
+
+# Create or append to log file
+echo "Week 2 Assignment Log - Group 3 (Melika, Kiran, Farnaz)" >> log.txt
+echo "Date: $(date)" >> log.txt
+echo "Research Question: What is the average genomic coverage and are there any notable SNVs in this monarch butterfly sample compared to a reference genome?" >> log.txt
+echo "Currently loaded modules:" >> log.txt
+module list >> log.txt
+
+# Verify sratoolkit is functional
+prefetch --version >> log.txt
+
+Currently Loaded Modules:
+  1) sratoolkit/3.0.0-mxcpa5u   8) ncurses/6.3-jucvtgr     15) libtirpc/1.2.6-nlxe37z
+  2) sra/3.0.0                  9) pigz/2.7-pgxannr        16) rpcsvc-proto/1.4.3-pwkr3wy
+  3) bzip2/1.0.8-ygodoco       10) zstd/1.4.5-t56zdnm      17) libnsl/1.2.0-ghznz6d
+  4) libiconv/1.16-wm65fks     11) tar/1.34-pzyd2rw        18) java/1.7.0_17
+  5) xz/5.2.7-qblhqq6          12) gettext/0.21.1-6tstvme  19) fastqc/0.10.1
+  6) zlib/1.2.13-7o67wyh       13) openssl/1.1.1s-ynretgf
+  7) libxml2/2.10.1-pf57z3a    14) krb5/1.19.3-whyhais
+
+ 
+
+aubfxy001@asaxlogin1:week2_assignment> nano download.slurm
+aubfxy001@asaxlogin1:week2_assignment> sbatch download.slurm
+ERROR:  ASA-X uses qsub in place of sbatch
+aubfxy001@asaxlogin1:week2_assignment> nano download.pbs
+aubfxy001@asaxlogin1:week2_assignment> nano download.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub download.pbs
+mkstemp: No such file or directory
+qsub: could not create/open tmp file /scratch/aubfxy001/tmp/pbsscrptPYxnsC for script
+aubfxy001@asaxlogin1:week2_assignment> ls -ld /scratch/aubfxy001/tmp
+ls: cannot access '/scratch/aubfxy001/tmp': No such file or directory
+aubfxy001@asaxlogin1:week2_assignment> mkdir -p /scratch/aubfxy001/tmp
+aubfxy001@asaxlogin1:week2_assignment> ls -ld /scratch/aubfxy001/tmp
+drwxr-xr-x 2 aubfxy001 aubpathbio 4096 Aug 26 18:32 /scratch/aubfxy001/tmp
+aubfxy001@asaxlogin1:week2_assignment> pwd
+/scratch/aubfxy001/week2_assignment
+aubfxy001@asaxlogin1:week2_assignment> nano download.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub download.pbs
+qsub: Job violates queue and/or server resource limits
+aubfxy001@asaxlogin1:week2_assignment> # List available queues and their limits
+qstat -Q -f
+Queue: workq
+    queue_type = Execution
+    total_jobs = 0
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    enabled = False
+    started = False
+
+Queue: small
+    queue_type = Execution
+    Priority = 5
+    total_jobs = 5
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:5 Exiting:0 Begun
+	:0 
+    resources_max.mem = 4gb
+    resources_max.ncpus = 8
+    resources_max.walltime = 60:00:00
+    resources_min.walltime = 01:00:00
+    default_chunk.Qlist = smallq
+    resources_assigned.mem = 8000mb
+    resources_assigned.mpiprocs = 4
+    resources_assigned.ncpus = 8
+    resources_assigned.nodect = 5
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: medium
+    queue_type = Execution
+    Priority = 10
+    total_jobs = 24
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:24 Exiting:0 Begu
+	n:0 
+    resources_max.mem = 16gb
+    resources_max.ncpus = 16
+    resources_max.walltime = 150:00:00
+    resources_min.walltime = 01:00:00
+    default_chunk.Qlist = mediumq
+    resources_assigned.mem = 389431296kb
+    resources_assigned.mpiprocs = 76
+    resources_assigned.ncpus = 81
+    resources_assigned.nodect = 24
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: large
+    queue_type = Execution
+    Priority = 10
+    total_jobs = 268
+    state_count = Transit:0 Queued:83 Held:0 Waiting:0 Running:185 Exiting:0 Be
+	gun:0 
+    resources_max.mem = 120gb
+    resources_max.ncpus = 128
+    resources_max.walltime = 360:00:00
+    resources_min.walltime = 01:00:00
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium
+    default_chunk.Qlist = largeq
+    resources_assigned.mem = 9897508864kb
+    resources_assigned.mpiprocs = 3250
+    resources_assigned.ncpus = 3323
+    resources_assigned.nodect = 1170
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: benchmark
+    queue_type = Execution
+    Priority = 15
+    total_jobs = 0
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    resources_max.mem = 490gb
+    resources_max.ncpus = 128
+    resources_max.walltime = 24:00:00
+    resources_min.walltime = 01:00:00
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium
+    default_chunk.Qlist = benchmarkq
+    resources_assigned.mem = 0mb
+    resources_assigned.mpiprocs = 0
+    resources_assigned.ncpus = 0
+    resources_assigned.nodect = 0
+    max_run = [o:PBS_ALL=1]
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: express
+    queue_type = Execution
+    total_jobs = 1
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:1 Exiting:0 Begun
+	:0 
+    resources_max.mem = 16gb
+    resources_max.ncpus = 4
+    resources_max.walltime = 04:00:00
+    resources_min.walltime = 01:00:00
+    default_chunk.Qlist = expressq
+    resources_assigned.mem = 4000mb
+    resources_assigned.mpiprocs = 4
+    resources_assigned.ncpus = 4
+    resources_assigned.nodect = 1
+    max_run = [u:PBS_GENERIC=1]
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: class
+    queue_type = Execution
+    Priority = 30
+    total_jobs = 0
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    resources_max.mem = 64gb
+    resources_max.ncpus = 60
+    resources_max.walltime = 12:00:00
+    resources_min.walltime = 01:00:00
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium,QUEUE=express
+    acl_group_enable = True
+    acl_groups = classq
+    default_chunk.Qlist = classq
+    resources_assigned.mem = 0mb
+    resources_assigned.mpiprocs = 0
+    resources_assigned.ncpus = 0
+    resources_assigned.nodect = 0
+    max_run = [u:PBS_GENERIC=1]
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: gpu
+    queue_type = Execution
+    Priority = 20
+    total_jobs = 15
+    state_count = Transit:0 Queued:12 Held:0 Waiting:0 Running:3 Exiting:0 Begu
+	n:0 
+    resources_max.mem = 120gb
+    resources_max.ncpus = 24
+    resources_max.walltime = 360:00:00
+    resources_min.walltime = 01:00:00
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium,QUEUE=express
+    default_chunk.Qlist = gpuq
+    resources_assigned.mem = 132000mb
+    resources_assigned.mpiprocs = 10
+    resources_assigned.ncpus = 10
+    resources_assigned.nodect = 3
+    max_run = [u:PBS_GENERIC=2]
+    node_group_key = gpuname
+    enabled = True
+    started = True
+
+Queue: bigmem
+    queue_type = Execution
+    Priority = 10
+    total_jobs = 17
+    state_count = Transit:0 Queued:2 Held:0 Waiting:0 Running:15 Exiting:0 Begu
+	n:0 
+    resources_max.mem = 500gb
+    resources_max.ncpus = 32
+    resources_max.walltime = 360:00:00
+    resources_min.mem = 130gb
+    resources_min.walltime = 01:00:00
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium,QUEUE=express
+    default_chunk.Qlist = bigmemq
+    resources_assigned.mem = 5822000mb
+    resources_assigned.mpiprocs = 280
+    resources_assigned.ncpus = 282
+    resources_assigned.nodect = 15
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: special
+    queue_type = Execution
+    Priority = 10
+    total_jobs = 1
+    state_count = Transit:0 Queued:1 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    resources_max.mem = 2000gb
+    resources_max.ncpus = 64
+    resources_max.walltime = 1008:00:00
+    resources_min.walltime = 01:00:00
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium,QUEUE=express
+    acl_group_enable = True
+    acl_groups = specialq
+    default_chunk.Qlist = specialq
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: commercial
+    queue_type = Execution
+    Priority = 150
+    total_jobs = 0
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    resources_max.mem = 360gb
+    resources_max.ncpus = 128
+    resources_max.walltime = 1008:00:00
+    resources_min.walltime = 01:00:00
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium,QUEUE=gpu,
+	QUEUE=class,QUEUE=bigmem,QUEUE=special,QUEUE=class
+    acl_group_enable = True
+    acl_groups = comq
+    default_chunk.Qlist = commercialq
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: sysadmin
+    queue_type = Execution
+    Priority = 10
+    total_jobs = 0
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    resources_max.ncpus = 2304
+    resources_max.walltime = 168:00:00
+    acl_group_enable = True
+    acl_groups = analyst
+    default_chunk.Qlist = sysadminq
+    resources_assigned.mem = 0mb
+    resources_assigned.mpiprocs = 0
+    resources_assigned.ncpus = 0
+    resources_assigned.nodect = 0
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+Queue: test
+    queue_type = Execution
+    total_jobs = 0
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium,QUEUE=express
+    default_chunk.Qlist = classgpuq
+    enabled = False
+    started = False
+
+Queue: classgpu
+    queue_type = Execution
+    Priority = 100
+    total_jobs = 0
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    resources_max.mem = 8gb
+    resources_max.ncpus = 4
+    resources_max.walltime = 08:00:00
+    resources_min.walltime = 00:00:30
+    resources_default.preempt_targets = QUEUE=small,QUEUE=medium,QUEUE=express
+    acl_group_enable = True
+    acl_groups = classq
+    default_chunk.Qlist = classgpuq
+    resources_assigned.mem = 0mb
+    resources_assigned.mpiprocs = 0
+    resources_assigned.ncpus = 0
+    resources_assigned.nodect = 0
+    max_run = [u:PBS_GENERIC=1]
+    node_group_key = gpuname
+    enabled = True
+    started = True
+
+Queue: interactive
+    queue_type = Execution
+    Priority = 100
+    total_jobs = 0
+    state_count = Transit:0 Queued:0 Held:0 Waiting:0 Running:0 Exiting:0 Begun
+	:0 
+    resources_max.mem = 8gb
+    resources_max.ncpus = 4
+    resources_max.walltime = 08:00:00
+    resources_min.walltime = 00:00:30
+    resources_default.mem = 4gb
+    resources_default.ncpus = 1
+    default_chunk.Qlist = interactiveq
+    resources_assigned.mem = 0gb
+    resources_assigned.mpiprocs = 0
+    resources_assigned.ncpus = 0
+    resources_assigned.nodect = 0
+    max_run = [u:PBS_GENERIC=1]
+    node_group_key = cpuchip
+    enabled = True
+    started = True
+
+aubfxy001@asaxlogin1:week2_assignment> nano download.pbs
+aubfxy001@asaxlogin1:week2_assignment> nano download.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub download.pbs
+1712.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1712.asax-pbs1  aubfxy0* small    download_* 550751   1   2  4096m 01:00 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1712.asax-pbs1  aubfxy0* small    download_* 550751   1   2  4096m 01:00 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1712.asax-pbs1  aubfxy0* small    download_* 550751   1   2  4096m 01:00 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+download.err  download.out  download.pbs  download.slurm  log.txt  tmp
+aubfxy001@asaxlogin1:week2_assignment> nano download.err 
+aubfxy001@asaxlogin1:week2_assignment> cd /scratch/aubfxy001/week2_assignment
+aubfxy001@asaxlogin1:week2_assignment> module load sratoolkit/3.0.0-mxcpa5u
+aubfxy001@asaxlogin1:week2_assignment> prefetch --version >> log.txt
+aubfxy001@asaxlogin1:week2_assignment> nano download.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub download.pbs
+1713.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+download.err  download.out  download.pbs  download.slurm  log.txt  tmp
+aubfxy001@asaxlogin1:week2_assignment> nano download.err
+aubfxy001@asaxlogin1:week2_assignment> ^C
+
+
+aubfxy001@asaxlogin1:week2_assignment> pwd
+/scratch/aubfxy001/week2_assignment
+aubfxy001@asaxlogin1:week2_assignment> module list >> log.txt
+
+Currently Loaded Modules:
+  1) sra/3.0.0                8) pigz/2.7-pgxannr        15) rpcsvc-proto/1.4.3-pwkr3wy
+  2) bzip2/1.0.8-ygodoco      9) zstd/1.4.5-t56zdnm      16) libnsl/1.2.0-ghznz6d
+  3) libiconv/1.16-wm65fks   10) tar/1.34-pzyd2rw        17) java/1.7.0_17
+  4) xz/5.2.7-qblhqq6        11) gettext/0.21.1-6tstvme  18) fastqc/0.10.1
+  5) zlib/1.2.13-7o67wyh     12) openssl/1.1.1s-ynretgf  19) sratoolkit/3.0.0-mxcpa5u
+  6) libxml2/2.10.1-pf57z3a  13) krb5/1.19.3-whyhais
+  7) ncurses/6.3-jucvtgr     14) libtirpc/1.2.6-nlxe37z
+
+ 
+
+aubfxy001@asaxlogin1:week2_assignment> # Check module details
+module show sratoolkit/3.0.0-mxcpa5u >> log.txt
+----------------------------------------------------------------------------------------------------
+   /apps/x86-64/apps/spack_0.19.1/spack/share/spack/lmod/linux-rocky8-x86_64/gcc/11.3.0/sratoolkit/3.0.0-mxcpa5u.lua:
+----------------------------------------------------------------------------------------------------
+whatis("Name : sratoolkit")
+whatis("Version : 3.0.0")
+whatis("Target : zen3")
+whatis("Short description : The NCBI SRA Toolkit enables reading ('dumping') of sequencing files from the SRA database and writing ('loading') files into the .sra format.")
+help([[The NCBI SRA Toolkit enables reading ("dumping") of sequencing files
+from the SRA database and writing ("loading") files into the .sra
+format.]])
+prepend_path("PATH","/apps/x86-64/apps/spack_0.19.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/sratoolkit-3.0.0-mxcpa5umngraag5gvnpmnsmwe4w52ksf/bin")
+prepend_path("CMAKE_PREFIX_PATH","/apps/x86-64/apps/spack_0.19.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/sratoolkit-3.0.0-mxcpa5umngraag5gvnpmnsmwe4w52ksf/.")
+
+aubfxy001@asaxlogin1:week2_assignment> nano download.err
+aubfxy001@asaxlogin1:week2_assignment> nano download.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub download.pbs
+1737.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1737.asax-pbs1  aubfxy0* medium   download_* 326729   1   4   12gb 03:00 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1737.asax-pbs1  aubfxy0* medium   download_* 326729   1   4   12gb 03:00 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1737.asax-pbs1  aubfxy0* medium   download_* 326729   1   4   12gb 03:00 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> 
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1737.asax-pbs1  aubfxy0* medium   download_* 326729   1   4   12gb 03:00 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+download.err  download.pbs    log.txt  SRR25297534_1.fastq  tmp
+download.out  download.slurm  sra      SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls -lh /scratch/aubfxy001/week2_assignment/SRR25297534*.fastq
+-rw-r--r-- 1 aubfxy001 aubpathbio 6.9G Aug 26 19:08 /scratch/aubfxy001/week2_assignment/SRR25297534_1.fastq
+-rw-r--r-- 1 aubfxy001 aubpathbio 6.9G Aug 26 19:08 /scratch/aubfxy001/week2_assignment/SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> cat /scratch/aubfxy001/week2_assignment/download.out
+cat /scratch/aubfxy001/week2_assignment/download.err
+
+ERROR: Unable to locate a modulefile for 'sra/3.0.0'
+ERROR: Unable to locate a modulefile for 'sratoolkit/3.0.0-mxcpa5u'
+No Modulefiles Currently Loaded.
+2025-08-27T00:06:45 prefetch.3.0.0: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2025-08-27T00:06:45 prefetch.3.0.0: 1) Downloading 'SRR25297534'...
+2025-08-27T00:06:45 prefetch.3.0.0: SRA Normalized Format file is being retrieved, if this is different from your preference, it may be due to current file availability.
+2025-08-27T00:06:45 prefetch.3.0.0:  Downloading via HTTPS...
+2025-08-27T00:07:29 prefetch.3.0.0:  HTTPS download succeed
+2025-08-27T00:07:34 prefetch.3.0.0:  'SRR25297534' is valid
+2025-08-27T00:07:34 prefetch.3.0.0: 1) 'SRR25297534' was downloaded successfully
+2025-08-27T00:07:34 prefetch.3.0.0: 'SRR25297534' has 0 unresolved dependencies
+spots read      : 16,588,021
+reads read      : 33,176,042
+reads written   : 33,176,042
+aubfxy001@asaxlogin1:week2_assignment> cat /scratch/aubfxy001/week2_assignment/log.txt
+Week 2 Assignment Log - Group 3
+Date: Tue Aug 26 06:24:38 PM CDT 2025
+Research Question: What is the average genomic coverage and are there any notable SNVs in this monarch butterfly sample compared to a reference genome?
+Week 2 Assignment Log - Group 3 (Melika, Kiran, Farnaz)
+Date: Tue Aug 26 06:28:20 PM CDT 2025
+Research Question: What is the average genomic coverage and are there any notable SNVs in this monarch butterfly sample compared to a reference genome?
+Currently loaded modules:
+
+"prefetch" version 3.0.0
+
+Download and conversion complete: Tue Aug 26 18:43:31 CDT 2025
+FASTQ files:
+
+"prefetch" version 3.0.0
+
+Download and conversion complete: Tue Aug 26 18:56:03 CDT 2025
+FASTQ files:
+Download and conversion complete: Tue Aug 26 19:08:16 CDT 2025
+FASTQ files:
+-rw-r--r-- 1 aubfxy001 aubpathbio 6.9G Aug 26 19:08 SRR25297534_1.fastq
+-rw-r--r-- 1 aubfxy001 aubpathbio 6.9G Aug 26 19:08 SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> wc -l /scratch/aubfxy001/week2_assignment/SRR25297534_1.fastq
+wc -l /scratch/aubfxy001/week2_assignment/SRR25297534_2.fastq
+66352084 /scratch/aubfxy001/week2_assignment/SRR25297534_1.fastq
+66352084 /scratch/aubfxy001/week2_assignment/SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> head -n 8 /scratch/aubfxy001/week2_assignment/SRR25297534_1.fastq 
+head -n 8 /scratch/aubfxy001/week2_assignment/SRR25297534_2.fastq
+@SRR25297534.1 E00477:274:GW180419274:6:1101:4888:1204 length=151
+GATATTTTGTTGGGAATACAGAAGTTAATTAATTAATTTGCAAATGAGTAGACAGTCCATCTGAAGGCAAGCAAGTGGTCATTGAAAACTACAATGTAAAACGTTGCGAGTGCTTTCAAAAATAATCAAATGTTGTCTAAAATATGAAACA
++SRR25297534.1 E00477:274:GW180419274:6:1101:4888:1204 length=151
+AAFFFJJJJJJJJJFJJJJJJJAFJJFJFJJJJFJJJJJFJJFJJJAAJJJJJFAJFJJJFJJJFJJJJFJJJJJJJJJJJJJJFJJJJJJJJJJJJJAFJJJAFJJJJJAFJJJJJJJ<JJJJJJJJJJFJAJFFJJFFJJJJJJJJFJA
+@SRR25297534.2 E00477:274:GW180419274:6:1101:8968:1204 length=149
+CCAAGGTTTTAAGATAAATTTAAATTAACNAAAACAAAATGAAATAGATTAAAGAATTGNATTTATAAATGAAAAATTTTTAGTACTGTAAATGTTATATNTTATNGCCATCATGGAACATTATTCTTGATATCTGNATAAACAAANTA
++SRR25297534.2 E00477:274:GW180419274:6:1101:8968:1204 length=149
+AAFAFFFFJJJJJJJJFJJJJJJJJJJJJ#JJJJJJJJJJJJJJJJ-JJJJJJJJJJJJ#JFJJJJJJJJJJJJJJFJJ<FJFJJJJJJJJJJJJJJJJJ#JJJJ#-AAJ-FJFFFJJJJFJJJJJJJ7FFJFJJJ#AFJJJJJJJ#FF
+@SRR25297534.1 E00477:274:GW180419274:6:1101:4888:1204 length=151
+ATANTTTTGTTTAATACAAAACTNCTTTCTGTTTCATATTTTAGANAACATNTGATTATTNTTGAAAGNACTCGCAACGTTTNACATTGTAGTTTTCAATGACCNCTNGCTNGNCTTCAGATGGACTNTCNACTCATTTGNAAATTAANTA
++SRR25297534.1 E00477:274:GW180419274:6:1101:4888:1204 length=151
+AAF#FJJJJJJJJJJJJJJJJJJ#JJFJJJJJJJJJJJJJJJJFJ#JJJJJ#JJJAFJJF#JJJJJJF#JJ7JJJJJFJJFJ#JJJJJJ7FJAJJJJJJJJJJJ#FJ#JJF#-#7<JJJAJJJFFFJ#JF#-AFJJJFJF#AAFAJJJ#JJ
+@SRR25297534.2 E00477:274:GW180419274:6:1101:8968:1204 length=151
+GAGNAATTTCTTTTTAAAAATGTNAGNAATTTANAAGANTTCTNTNTATATNAATACNACNTCTTANANGAAATACTCTTNTNCCNGAGTTTCTTACCAANCTCNTCNAAANANCTGGANNGATTNTNATNAANTTTNTANGCATANTNTT
++SRR25297534.2 E00477:274:GW180419274:6:1101:8968:1204 length=151
+AAF#AFJJFJJJJ<JFFJJJFFF#<J#JJJJJJ#JJJJ#JJFJ#J#JJ<JJ#JJJJJ#JF#JJ<FJ#F#JJJJFJFJJJJ#J#FJ#FJJJJJFFJJA7FF#77F#FJ#FJJ#A#AFAFF##<A<F#J#FJ#AA#<FA#AA#7-F<A#A#7F
+aubfxy001@asaxlogin1:week2_assignment> nano qc.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub qc.pbs
+1748.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+download.err  download.pbs    log.txt  qc.out  qc_results  SRR25297534_1.fastq  tmp
+download.out  download.slurm  qc.err   qc.pbs  sra         SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> cd qc_results/
+aubfxy001@asaxlogin1:qc_results> ls
+aubfxy001@asaxlogin1:qc_results> cd ..
+aubfxy001@asaxlogin1:week2_assignment> cd sra
+aubfxy001@asaxlogin1:sra> ls
+sra
+aubfxy001@asaxlogin1:sra> cd sra
+aubfxy001@asaxlogin1:sra> ls
+SRR25297534.sra
+aubfxy001@asaxlogin1:sra> nano SRR25297534.sra 
+aubfxy001@asaxlogin1:sra> cd ..
+aubfxy001@asaxlogin1:sra> pwd
+/scratch/aubfxy001/week2_assignment/sra
+aubfxy001@asaxlogin1:sra> cd ..
+aubfxy001@asaxlogin1:week2_assignment> pwd
+/scratch/aubfxy001/week2_assignment
+aubfxy001@asaxlogin1:week2_assignment> ls
+download.err  download.pbs    log.txt  qc.out  qc_results  SRR25297534_1.fastq  tmp
+download.out  download.slurm  qc.err   qc.pbs  sra         SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> nano 02_fastqc.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub 02_fastqc.pbs
+1755.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc.pbs  download.pbs    fastqc.out  qc.out      sra                  tmp
+download.err   download.slurm  log.txt     qc.pbs      SRR25297534_1.fastq
+download.out   fastqc.err      qc.err      qc_results  SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> nano fastqc.err
+aubfxy001@asaxlogin1:week2_assignment> nano 02_fastqc.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub 02_fastqc.pbs
+1778.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc.pbs  download.pbs    fastqc.out  qc.out      sra                  tmp
+download.err   download.slurm  log.txt     qc.pbs      SRR25297534_1.fastq
+download.out   fastqc.err      qc.err      qc_results  SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> nano fastqc.err
+aubfxy001@asaxlogin1:week2_assignment> nano 02_fastqc.pbs
+aubfxy001@asaxlogin1:week2_assignment> # show full info for completed job (works on PBS Pro/Torque)
+qstat -x -f 1778.asax-pbs1 || qstat -f 1778.asax-pbs1
+Job Id: 1778.asax-pbs1
+    Job_Name = fastqc_SRR25297534
+    Job_Owner = aubfxy001@asaxlogin1.asc.edu
+    resources_used.cpupercent = 32
+    resources_used.cput = 00:00:00
+    resources_used.mem = 6436kb
+    resources_used.ncpus = 4
+    resources_used.vmem = 0kb
+    resources_used.walltime = 00:00:01
+    job_state = F
+    queue = medium
+    server = asax-pbs1
+    Checkpoint = u
+    ctime = Tue Aug 26 19:44:57 2025
+    Error_Path = asaxlogin1:/scratch/aubfxy001/week2_assignment/fastqc.err
+    exec_host = asax013/72*4
+    exec_vnode = (asax013:ncpus=4:mem=12582912kb)
+    Hold_Types = n
+    Join_Path = n
+    Keep_Files = n
+    Mail_Points = a
+    mtime = Tue Aug 26 19:45:02 2025
+    Output_Path = asaxlogin1:/scratch/aubfxy001/week2_assignment/fastqc.out
+    Priority = 0
+    qtime = Tue Aug 26 19:44:57 2025
+    Rerunable = True
+    Resource_List.mem = 12582912kb
+    Resource_List.mpiprocs = 4
+    Resource_List.ncpus = 4
+    Resource_List.nodect = 1
+    Resource_List.nodes = 1:ppn=4
+    Resource_List.place = scatter
+    Resource_List.select = 1:ncpus=4:mem=12582912KB:mpiprocs=4
+    Resource_List.walltime = 04:00:00
+    stime = Tue Aug 26 19:44:58 2025
+    obittime = Tue Aug 26 19:45:01 2025
+    jobdir = /home/aubfxy001
+    substate = 93
+    Variable_List = PBS_O_HOME=/home/aubfxy001,PBS_O_LANG=en_US.UTF-8,
+	PBS_O_LOGNAME=aubfxy001,
+	PBS_O_PATH=/apps/x86-64/apps/spack_0.19.1/spack/opt/spack/linux-rocky8
+	-zen3/gcc-11.3.0/sratoolkit-3.0.0-mxcpa5umngraag5gvnpmnsmwe4w52ksf/bin:
+	/apps/x86-64/apps/fastqc_0.10.1/FastQC:/apps/x86-64/apps/jdk_1.7.0_17/j
+	dk1.7.0_17/bin:/apps/x86-64/apps/spack_0.19.1/spack/opt/spack/linux-roc
+	ky8-zen3/gcc-11.3.0/rpcsvc-proto-1.4.3-pwkr3wykemr5uwnbjbx7hcca36tlshvt
+	/bin:/apps/x86-64/apps/spack_0.19.1/spack/opt/spack/linux-rocky8-zen3/g
+	cc-11.3.0/krb5-1.19.3-whyhaislefupqdwplppfq3hobxmhtvrs/bin:/apps/x86-64
+	/apps/spack_0.19.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/openssl
+	-1.1.1s-ynretgfcoiljlt6s3v7k5dykuc2x2yq7/bin:/apps/x86-64/apps/spack_0.
+	19.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/gettext-0.21.1-6tstvm
+	eabxqrie2x5t73yl2suqyk457s/bin:/apps/x86-64/apps/spack_0.19.1/spack/opt
+	/spack/linux-rocky8-zen3/gcc-11.3.0/tar-1.34-pzyd2rwbnfh4pyo2hpd2hkh354
+	u6nrb4/bin:/apps/x86-64/apps/zstd_1.4.5/bin:/apps/x86-64/apps/spack_0.1
+	9.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/pigz-2.7-pgxannrixr2n2
+	q37kmqbfejvpywlak2k/bin:/apps/x86-64/apps/spack_0.19.1/spack/opt/spack/
+	linux-rocky8-zen3/gcc-11.3.0/ncurses-6.3-jucvtgrtg2c2gv5tmygpkgwr6j2vcx
+	oo/bin:/apps/x86-64/apps/spack_0.19.1/spack/opt/spack/linux-rocky8-zen3
+	/gcc-11.3.0/libxml2-2.10.1-pf57z3alghyqskjit3fuibbhqpjldsp5/bin:/apps/x
+	86-64/apps/spack_0.19.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/xz
+	-5.2.7-qblhqq6kwib3amlhqtxq7kllzcxvwwdp/bin:/apps/x86-64/apps/spack_0.1
+	9.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/libiconv-1.16-wm65fksa
+	r6x3hlq3fj5gaxjdq3mrmv6b/bin:/apps/x86-64/apps/spack_0.19.1/spack/opt/s
+	pack/linux-rocky8-zen3/gcc-11.3.0/bzip2-1.0.8-ygodococpaqnd4rbl2zhq25jc
+	vzlfk2t/bin:/apps/x86-64/apps/lua_5.4.4/bin:/home/aubfxy001/miniforge3/
+	condabin:/apps/x86-64/apps/lua_5.4.4/bin:/usr/share/Modules/bin:/usr/lo
+	cal/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sysopt/pbs/bin:/scripts:/sy
+	sopt/pbs/bin:.:/scripts:/sysopt/pbs/bin:.,
+	PBS_O_MAIL=/var/spool/mail/aubfxy001,PBS_O_SHELL=/bin/bash,
+	PBS_O_INTERACTIVE_AUTH_METHOD=resvport,PBS_O_HOST=asaxlogin1,
+	PBS_O_WORKDIR=/scratch/aubfxy001/week2_assignment,PBS_O_SYSTEM=Linux,
+	PBS_O_QUEUE=medium
+    comment = Job run at Tue Aug 26 at 19:44 on (asax013:ncpus=4:mem=12582912kb
+	) and failed
+    etime = Tue Aug 26 19:44:57 2025
+    run_count = 1
+    eligible_time = 00:00:04
+    Stageout_status = 1
+    Exit_status = 1
+    Submit_arguments = 02_fastqc.pbs
+    history_timestamp = 1756255502
+    project = _pbs_project_default
+    Submit_Host = asaxlogin1.asc.edu
+
+aubfxy001@asaxlogin1:week2_assignment> sed -n '1,200p' fastqc.out
+aubfxy001@asaxlogin1:week2_assignment> # FastQC HTML + ZIPs
+ls -lh qc/fastqc/*_fastqc.html qc/fastqc/*_fastqc.zip
+
+# (optional) MultiQC summary
+ls -lh qc/multiqc/multiqc_report.html
+ls: cannot access 'qc/fastqc/*_fastqc.html': No such file or directory
+ls: cannot access 'qc/fastqc/*_fastqc.zip': No such file or directory
+ls: cannot access 'qc/multiqc/multiqc_report.html': No such file or directory
+aubfxy001@asaxlogin1:week2_assignment> nano 02_fastqc_debug.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub 02_fastqc_debug.pbs
+qsub: Job violates queue and/or server resource limits
+aubfxy001@asaxlogin1:week2_assignment> nano 02_fastqc_debug.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub 02_fastqc_debug.pbs
+1786.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_debug.pbs  download.out    fastqc.err  qc      qc.pbs      SRR25297534_1.fastq
+02_fastqc.pbs        download.pbs    fastqc.out  qc.err  qc_results  SRR25297534_2.fastq
+download.err         download.slurm  log.txt     qc.out  sra         tmp
+aubfxy001@asaxlogin1:week2_assignment> nano fastqc.err
+aubfxy001@asaxlogin1:week2_assignment> # Try to locate a Java already installed on your cluster
+ls -d /apps/x86-64/apps/jdk_*/*/bin 2>/dev/null | head
+
+# If you see .../jdk1.7.0_17/bin or similar, prepend it to PATH:
+export PATH=/apps/x86-64/apps/jdk_1.7.0_17/jdk1.7.0_17/bin:$PATH
+
+# Confirm:
+which java && java -version
+which fastqc && fastqc --version
+/apps/x86-64/apps/jdk_1.7.0_17/jdk1.7.0_17/bin
+/apps/x86-64/apps/jdk_1.7.0_17/jdk1.7.0_17/bin/java
+java version "1.7.0_17"
+Java(TM) SE Runtime Environment (build 1.7.0_17-b02)
+Java HotSpot(TM) 64-Bit Server VM (build 23.7-b01, mixed mode)
+/apps/x86-64/apps/fastqc_0.10.1/FastQC/fastqc
+FastQC v0.10.1
+aubfxy001@asaxlogin1:week2_assignment> ls -d /apps/x86-64/apps/jdk_*/*/bin 2>/dev/null | head
+/apps/x86-64/apps/jdk_1.7.0_17/jdk1.7.0_17/bin
+aubfxy001@asaxlogin1:week2_assignment> export PATH=/apps/x86-64/apps/jdk_1.7.0_17/jdk1.7.0_17/bin:$PATH
+aubfxy001@asaxlogin1:week2_assignment> which java && java -version
+which fastqc && fastqc --version
+/apps/x86-64/apps/jdk_1.7.0_17/jdk1.7.0_17/bin/java
+java version "1.7.0_17"
+Java(TM) SE Runtime Environment (build 1.7.0_17-b02)
+Java HotSpot(TM) 64-Bit Server VM (build 23.7-b01, mixed mode)
+/apps/x86-64/apps/fastqc_0.10.1/FastQC/fastqc
+FastQC v0.10.1
+aubfxy001@asaxlogin1:week2_assignment> nano 02_fastqc_java7.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub 02_fastqc_java7.pbs
+qsub: Job violates queue and/or server resource limits
+aubfxy001@asaxlogin1:week2_assignment> qstat -Qf medium | egrep 'resources_(max|min)|default|max_user_run|enabled|started|Priority|from|to' || qstat -Qf
+    Priority = 10
+    total_jobs = 25
+    resources_max.mem = 16gb
+    resources_max.ncpus = 16
+    resources_max.walltime = 150:00:00
+    resources_min.walltime = 01:00:00
+    default_chunk.Qlist = mediumq
+    enabled = True
+    started = True
+aubfxy001@asaxlogin1:week2_assignment> nano 02_fastqc_java7.pbs
+aubfxy001@asaxlogin1:week2_assignment> nano 02_fastqc_run_medium.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub 02_fastqc_run_medium.pbs
+1790.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:01
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:01
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:02
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:04
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1790.asax-pbs1  aubfxy0* medium   fastqc_SR* 161370   1   1    4gb 01:10 R 00:07
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_debug.pbs       download.err    fastqc.err  qc.err      sra
+02_fastqc_java7.pbs       download.out    fastqc.out  qc.out      SRR25297534_1.fastq
+02_fastqc.pbs             download.pbs    log.txt     qc.pbs      SRR25297534_2.fastq
+02_fastqc_run_medium.pbs  download.slurm  qc          qc_results  tmp
+aubfxy001@asaxlogin1:week2_assignment> nano fastqc.err 
+aubfxy001@asaxlogin1:week2_assignment> qstat -x -f 1790.asax-pbs1 | egrep 'Exit_status|resources_used.walltime'
+    resources_used.walltime = 00:09:47
+    Exit_status = 0
+aubfxy001@asaxlogin1:week2_assignment> ls -lh qc/fastqc/*_fastqc.html qc/fastqc/*_fastqc.zip
+ls: cannot access 'qc/fastqc/*_fastqc.html': No such file or directory
+-rw-r--r-- 1 aubfxy001 aubpathbio 142K Aug 26 20:11  qc/fastqc/SRR25297534_1_fastqc.zip
+-rw-r--r-- 1 aubfxy001 aubpathbio 145K Aug 26 20:16  qc/fastqc/SRR25297534_2_fastqc.zip
+aubfxy001@asaxlogin1:week2_assignment> for z in qc/fastqc/*_fastqc.zip; do
+  echo "### $(basename "$z")"
+  unzip -p "$z" '*/summary.txt'
+done
+### SRR25297534_1_fastqc.zip
+PASS	Basic Statistics	SRR25297534_1.fastq
+PASS	Per base sequence quality	SRR25297534_1.fastq
+PASS	Per sequence quality scores	SRR25297534_1.fastq
+FAIL	Per base sequence content	SRR25297534_1.fastq
+FAIL	Per base GC content	SRR25297534_1.fastq
+WARN	Per sequence GC content	SRR25297534_1.fastq
+PASS	Per base N content	SRR25297534_1.fastq
+WARN	Sequence Length Distribution	SRR25297534_1.fastq
+FAIL	Sequence Duplication Levels	SRR25297534_1.fastq
+PASS	Overrepresented sequences	SRR25297534_1.fastq
+WARN	Kmer Content	SRR25297534_1.fastq
+### SRR25297534_2_fastqc.zip
+PASS	Basic Statistics	SRR25297534_2.fastq
+PASS	Per base sequence quality	SRR25297534_2.fastq
+PASS	Per sequence quality scores	SRR25297534_2.fastq
+FAIL	Per base sequence content	SRR25297534_2.fastq
+FAIL	Per base GC content	SRR25297534_2.fastq
+FAIL	Per sequence GC content	SRR25297534_2.fastq
+PASS	Per base N content	SRR25297534_2.fastq
+WARN	Sequence Length Distribution	SRR25297534_2.fastq
+FAIL	Sequence Duplication Levels	SRR25297534_2.fastq
+PASS	Overrepresented sequences	SRR25297534_2.fastq
+WARN	Kmer Content	SRR25297534_2.fastq
+aubfxy001@asaxlogin1:week2_assignment> printf "file,status,module\n" > qc/fastqc/summary.csv
+for z in qc/fastqc/*_fastqc.zip; do
+  base=$(basename "$z" _fastqc.zip)
+  unzip -p "$z" '*/summary.txt' | awk -F '\t' -v f="$base" '{print f","$1","$2}'
+done >> qc/fastqc/summary.csv
+ls -lh qc/fastqc/summary.csv
+-rw-r--r-- 1 aubfxy001 aubpathbio 949 Aug 26 20:21 qc/fastqc/summary.csv
+aubfxy001@asaxlogin1:week2_assignment> scp aubfxy001@asaxlogin1.asc.edu:/scratch/aubfxy001/week2_assignment/qc/fastqc/*_fastqc.html ~/Downloads/
+Warning: Permanently added 'asaxlogin1.asc.edu' (ED25519) to the list of known hosts.
+(aubfxy001@asaxlogin1.asc.edu) Password: 
+(aubfxy001@asaxlogin1.asc.edu) Duo two-factor login for aubfxy001
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-8494
+ 2. Phone call to XXX-XXX-8494
+ 3. SMS passcodes to XXX-XXX-8494
+
+Passcode or option (1-3): 1
+Success. Logging you in...
+File "/scratch/aubfxy001/week2_assignment/qc/fastqc/*_fastqc.html" not found.
+Failed to download '/scratch/aubfxy001/week2_assignment/qc/fastqc/*_fastqc.html'
+aubfxy001@asaxlogin1:week2_assignment> pwd
+/scratch/aubfxy001/week2_assignment
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_debug.pbs       download.err    fastqc.err  qc.err      sra
+02_fastqc_java7.pbs       download.out    fastqc.out  qc.out      SRR25297534_1.fastq
+02_fastqc.pbs             download.pbs    log.txt     qc.pbs      SRR25297534_2.fastq
+02_fastqc_run_medium.pbs  download.slurm  qc          qc_results  tmp
+aubfxy001@asaxlogin1:week2_assignment> cd qc
+aubfxy001@asaxlogin1:qc> ls
+fastqc  multiqc
+aubfxy001@asaxlogin1:qc> cd fastqc/
+aubfxy001@asaxlogin1:fastqc> ls
+SRR25297534_1_fastqc      SRR25297534_2_fastqc      summary.csv
+SRR25297534_1_fastqc.zip  SRR25297534_2_fastqc.zip
+aubfxy001@asaxlogin1:fastqc> nano summary.csv 
+aubfxy001@asaxlogin1:fastqc> nano 03_trim_fastp_and_postqc.pbs
+aubfxy001@asaxlogin1:fastqc> qsub 03_trim_fastp_and_postqc.pbs
+1807.asax-pbs1
+aubfxy001@asaxlogin1:fastqc> qstat -u aubfxy001
+aubfxy001@asaxlogin1:fastqc> ls
+03_trim_fastp_and_postqc.pbs  SRR25297534_1_fastqc      SRR25297534_2_fastqc.zip  trim
+bin                           SRR25297534_1_fastqc.zip  summary.csv
+qc                            SRR25297534_2_fastqc      tmp
+aubfxy001@asaxlogin1:fastqc> pwd
+/scratch/aubfxy001/week2_assignment/qc/fastqc
+aubfxy001@asaxlogin1:fastqc> cd ..
+aubfxy001@asaxlogin1:qc> ls
+fastqc  multiqc
+aubfxy001@asaxlogin1:qc> cd ..
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_debug.pbs       download.err    fastqc.err  qc.err      sra                  trim.err
+02_fastqc_java7.pbs       download.out    fastqc.out  qc.out      SRR25297534_1.fastq  trim.out
+02_fastqc.pbs             download.pbs    log.txt     qc.pbs      SRR25297534_2.fastq
+02_fastqc_run_medium.pbs  download.slurm  qc          qc_results  tmp
+aubfxy001@asaxlogin1:week2_assignment> nano trim.err
+aubfxy001@asaxlogin1:week2_assignment> cd qc
+aubfxy001@asaxlogin1:qc> cd fastqc/
+aubfxy001@asaxlogin1:fastqc> la
+.                             bin                   SRR25297534_1_fastqc.zip  summary.csv
+..                            qc                    SRR25297534_2_fastqc      tmp
+03_trim_fastp_and_postqc.pbs  SRR25297534_1_fastqc  SRR25297534_2_fastqc.zip  trim
+aubfxy001@asaxlogin1:fastqc> rm 03_trim_fastp_and_postqc.pbs 
+aubfxy001@asaxlogin1:fastqc> ls
+bin  SRR25297534_1_fastqc      SRR25297534_2_fastqc      summary.csv  trim
+qc   SRR25297534_1_fastqc.zip  SRR25297534_2_fastqc.zip  tmp
+aubfxy001@asaxlogin1:fastqc> cd ..
+aubfxy001@asaxlogin1:qc> cd ..
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_debug.pbs       download.err    fastqc.err  qc.err      sra                  trim.err
+02_fastqc_java7.pbs       download.out    fastqc.out  qc.out      SRR25297534_1.fastq  trim.out
+02_fastqc.pbs             download.pbs    log.txt     qc.pbs      SRR25297534_2.fastq
+02_fastqc_run_medium.pbs  download.slurm  qc          qc_results  tmp
+aubfxy001@asaxlogin1:week2_assignment> nano 03_trim_fastp_and_postqc.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub 03_trim_fastp_and_postqc.pbs
+1810.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_debug.pbs           bin             fastqc.err  qc.out               SRR25297534_2.fastq
+02_fastqc_java7.pbs           download.err    fastqc.out  qc.pbs               tmp
+02_fastqc.pbs                 download.out    log.txt     qc_results           trim
+02_fastqc_run_medium.pbs      download.pbs    qc          sra                  trim.err
+03_trim_fastp_and_postqc.pbs  download.slurm  qc.err      SRR25297534_1.fastq  trim.out
+aubfxy001@asaxlogin1:week2_assignment> nano trim.err 
+aubfxy001@asaxlogin1:week2_assignment> rm 02_fastqc_debug.pbs 
+aubfxy001@asaxlogin1:week2_assignment> rm 02_fastqc_java7.pbs 
+aubfxy001@asaxlogin1:week2_assignment> rm 02_fastqc.pbs 
+aubfxy001@asaxlogin1:week2_assignment> rm download.*
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_run_medium.pbs      fastqc.err  qc      qc.pbs      SRR25297534_1.fastq  trim
+03_trim_fastp_and_postqc.pbs  fastqc.out  qc.err  qc_results  SRR25297534_2.fastq  trim.err
+bin                           log.txt     qc.out  sra         tmp                  trim.out
+aubfxy001@asaxlogin1:week2_assignment> rm fastqc.*
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_run_medium.pbs      bin      qc      qc.out  qc_results  SRR25297534_1.fastq  tmp   trim.err
+03_trim_fastp_and_postqc.pbs  log.txt  qc.err  qc.pbs  sra         SRR25297534_2.fastq  trim  trim.out
+aubfxy001@asaxlogin1:week2_assignment> rm qc.*
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_run_medium.pbs      log.txt     sra                  tmp       trim.out
+03_trim_fastp_and_postqc.pbs  qc          SRR25297534_1.fastq  trim
+bin                           qc_results  SRR25297534_2.fastq  trim.err
+aubfxy001@asaxlogin1:week2_assignment> nano 03_trim_trimmomatic_postqc.pbs
+aubfxy001@asaxlogin1:week2_assignment> qsub 03_trim_trimmomatic_postqc.pbs
+1815.asax-pbs1
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:00
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:01
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:04
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:07
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:08
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:11
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:13
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:18
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:20
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:21
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:22
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:22
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:24
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:24
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:29
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:41
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:41
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:50
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:51
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:54
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1815.asax-pbs1  aubfxy0* medium   trim_trim* 577887   1   4    8gb 01:30 R 00:54
+aubfxy001@asaxlogin1:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin1:week2_assignment> ls
+02_fastqc_run_medium.pbs        jdk11.tgz   sra                  trim
+03_trim_fastp_and_postqc.pbs    log.txt     SRR25297534_1.fastq  trim.err
+03_trim_trimmomatic_postqc.pbs  qc          SRR25297534_2.fastq  Trimmomatic-0.39.zip
+bin                             qc_results  tmp                  trim.out
+aubfxy001@asaxlogin1:week2_assignment> qstat -x -f 1815.asax-pbs1 | egrep 'job_state|Exit_status|resources_used.walltime'
+# Expect: Exit_status = 0 and job_state = F
+    resources_used.walltime = 00:56:58
+    job_state = F
+    Exit_status = 0
+aubfxy001@asaxlogin1:week2_assignment> ls -lh trim/*trim.fastq.gz
+# expect: SRR25297534_1P.trim.fastq.gz, SRR25297534_2P.trim.fastq.gz (+ the U files)
+-rw-r--r-- 1 aubfxy001 aubpathbio 1.2G Aug 26 21:46 trim/SRR25297534_1P.trim.fastq.gz
+-rw-r--r-- 1 aubfxy001 aubpathbio  64M Aug 26 21:46 trim/SRR25297534_1U.trim.fastq.gz
+-rw-r--r-- 1 aubfxy001 aubpathbio 1.2G Aug 26 21:46 trim/SRR25297534_2P.trim.fastq.gz
+-rw-r--r-- 1 aubfxy001 aubpathbio  11M Aug 26 21:46 trim/SRR25297534_2U.trim.fastq.gz
+aubfxy001@asaxlogin1:week2_assignment> grep -E 'Input Read Pairs|Both Surviving|Forward Only Surviving|Reverse Only Surviving|Dropped' trim/trimmomatic.log
+aubfxy001@asaxlogin1:week2_assignment> echo "R1 pre:" $(( $(wc -l < SRR25297534_1.fastq) / 4 ))
+echo "R2 pre:" $(( $(wc -l < SRR25297534_2.fastq) / 4 ))
+zcat trim/SRR25297534_1P.trim.fastq.gz | awk 'END{print "R1P post:", NR/4}'
+zcat trim/SRR25297534_2P.trim.fastq.gz | awk 'END{print "R2P post:", NR/4}'
+R1 pre: 16588021
+R2 pre: 16588021
+R1P post: 15605818
+R2P post: 15605818
+aubfxy001@asaxlogin1:week2_assignment> # Reports produced by the script:
+ls -lh qc/fastqc_posttrim/*_fastqc.zip qc/fastqc_posttrim/*_fastqc.html
+
+# If HTMLs are missing (older FastQC tucks them inside the ZIPs):
+for z in qc/fastqc_posttrim/*_fastqc.zip; do d="${z%.zip}"; unzip -o -q "$z" -d "$d"; cp "$d/fastqc_report.html" "${d}.html"; done
+ls -lh qc/fastqc_posttrim/*_fastqc.html
+
+# PASS/WARN/FAIL table
+column -s, -t qc/fastqc_posttrim/summary_posttrim.csv | sed -n '1,80p'
+-rw-r--r-- 1 aubfxy001 aubpathbio 7.3K Aug 26 21:51 qc/fastqc_posttrim/SRR25297534_1P.trim_fastqc.html
+-rw-r--r-- 1 aubfxy001 aubpathbio 190K Aug 26 21:51 qc/fastqc_posttrim/SRR25297534_1P.trim_fastqc.zip
+-rw-r--r-- 1 aubfxy001 aubpathbio 7.1K Aug 26 21:51 qc/fastqc_posttrim/SRR25297534_2P.trim_fastqc.html
+-rw-r--r-- 1 aubfxy001 aubpathbio 179K Aug 26 21:51 qc/fastqc_posttrim/SRR25297534_2P.trim_fastqc.zip
+-rw-r--r-- 1 aubfxy001 aubpathbio 7.3K Aug 26 22:03 qc/fastqc_posttrim/SRR25297534_1P.trim_fastqc.html
+-rw-r--r-- 1 aubfxy001 aubpathbio 7.1K Aug 26 22:03 qc/fastqc_posttrim/SRR25297534_2P.trim_fastqc.html
+file                 status  module
+SRR25297534_1P.trim  PASS    Basic Statistics
+SRR25297534_1P.trim  PASS    Per base sequence quality
+SRR25297534_1P.trim  PASS    Per sequence quality scores
+SRR25297534_1P.trim  FAIL    Per base sequence content
+SRR25297534_1P.trim  FAIL    Per base GC content
+SRR25297534_1P.trim  WARN    Per sequence GC content
+SRR25297534_1P.trim  PASS    Per base N content
+SRR25297534_1P.trim  WARN    Sequence Length Distribution
+SRR25297534_1P.trim  FAIL    Sequence Duplication Levels
+SRR25297534_1P.trim  PASS    Overrepresented sequences
+SRR25297534_1P.trim  WARN    Kmer Content
+SRR25297534_2P.trim  PASS    Basic Statistics
+SRR25297534_2P.trim  PASS    Per base sequence quality
+SRR25297534_2P.trim  PASS    Per sequence quality scores
+SRR25297534_2P.trim  FAIL    Per base sequence content
+SRR25297534_2P.trim  FAIL    Per base GC content
+SRR25297534_2P.trim  WARN    Per sequence GC content
+SRR25297534_2P.trim  PASS    Per base N content
+SRR25297534_2P.trim  WARN    Sequence Length Distribution
+SRR25297534_2P.trim  FAIL    Sequence Duplication Levels
+SRR25297534_2P.trim  PASS    Overrepresented sequences
+SRR25297534_2P.trim  WARN    Kmer Content
+aubfxy001@asaxlogin1:week2_assignment> scp 'aubfxy001@asaxlogin1.asc.edu:/scratch/aubfxy001/week2_assignment/qc/fastqc_posttrim/*_fastqc.html' ~/Downloads/
+(aubfxy001@asaxlogin1.asc.edu) Password: 
+(aubfxy001@asaxlogin1.asc.edu) Duo two-factor login for aubfxy001
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-8494
+ 2. Phone call to XXX-XXX-8494
+ 3. SMS passcodes to XXX-XXX-8494
+
+Passcode or option (1-3): 1
+Success. Logging you in...
+SRR25297534_1P.trim_fastqc.html                                       100% 7412     6.2MB/s   00:00    
+SRR25297534_2P.trim_fastqc.html                                       100% 7231     7.3MB/s   00:00    
+aubfxy001@asaxlogin1:week2_assignment> scp 'aubfxy001@asaxlogin1.asc.edu:/scratch/aubfxy001/week2_assignment/trim/trimmomatic.log' ~/Downloads/
+(aubfxy001@asaxlogin1.asc.edu) Password: 
+(aubfxy001@asaxlogin1.asc.edu) Duo two-factor login for aubfxy001
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-8494
+ 2. Phone call to XXX-XXX-8494
+ 3. SMS passcodes to XXX-XXX-8494
+
+Passcode or option (1-3): 1
+Success. Logging you in...
+trimmomatic.log                                                                                   100% 2682MB 368.9MB/s   00:07    
+trimmomatic.log                                                                                       100% 2682MB 366.4MB/s   00:07    aubfxyaauaauaaubfaaauaubaauaauaaaaubaubfxy001@asaxlogin1:week2_assignment> exit
+logout
+Connection to asax.asc.edu closed.
+MacBookPro:~ farnazyousefi$ scp 'aubfxy001@asaxlogin1.asc.edu:/scratch/aubfxy001/week2_assignment/trim/trimmomatic.log' ~/Downloads/
+ssh: Could not resolve hostname asaxlogin1.asc.edu: nodename nor servname provided, or not known
+scp: Connection closed
+MacBookPro:~ farnazyousefi$ ssh aubfxy001@asax.asc.edu
+(aubfxy001@asax.asc.edu) Password: 
+(aubfxy001@asax.asc.edu) Duo two-factor login for aubfxy001
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-8494
+ 2. Phone call to XXX-XXX-8494
+ 3. SMS passcodes to XXX-XXX-8494
+
+Passcode or option (1-3): 1
+Success. Logging you in...
+Success. Logging you in...
+Last login: Tue Aug 26 16:26:12 2025 from 35.151.25.39
+----------------------------------------------------------------------------
+The HPC systems are NOT certified for HIPAA, ITAR, 800-171, DoD classified,
+GDPR, or most other government-defined security standards.
+ 
+The HPC documentation website is https://hpcdocs.asc.edu/ If you have any
+questions please contact hpc@asc.edu or call the helpdesk at 256-971-7448
+or 800-338-8320 if you are outside of Huntsville.  We can often give the
+fastest assistance if we receive an email with the directory and job number.
+
+----------------------------------------------------------------------------
+Queue jobs most recently completed
+     job                            parallel   memory      memory
+  number           job name cores efficiency  request  efficiency
+-------- ------------------ ----- ----------  -------  ----------
+    1807  trim_fastp_postqc     4      0.00%      8gb       0.11%
+    1810  trim_fastp_postqc     4      0.00%      8gb       0.09%
+    1815 trim_trimmomatic_postqc     4     42.07%      8gb      84.22%
+Jobs with a parallel efficiency below 75% should use fewer cores.
+Jobs with a memory efficiency below 50% should request less memory.
+Requesting more resources than needed increases the job wait time in the queue.
+ 
+aubfxy001@asaxlogin3:~> pwd
+/home/aubfxy001
+aubfxy001@asaxlogin3:~> ls
+bin  cbc_asc_SRR25297534  cbc_w2  cbc_week2  Downloads  info  log.txt  micromamba  miniforge3  Miniforge.sh  wipe_cbc_project.sh
+aubfxy001@asaxlogin3:~> PROJ=/scratch/$USER/week2_assignment
+mkdir -p "$PROJ"
+cd "$PROJ"
+pwd
+/scratch/aubfxy001/week2_assignment
+aubfxy001@asaxlogin3:week2_assignment> ls -lh trim/*P.trim.fastq.gz 2>/dev/null || \
+find /scratch/$USER -maxdepth 3 -name '*P.trim.fastq.gz' -ls
+-rw-r--r-- 1 aubfxy001 aubpathbio 1.2G Aug 26 21:46 trim/SRR25297534_1P.trim.fastq.gz
+-rw-r--r-- 1 aubfxy001 aubpathbio 1.2G Aug 26 21:46 trim/SRR25297534_2P.trim.fastq.gz
+aubfxy001@asaxlogin3:week2_assignment> pwd
+/scratch/aubfxy001/week2_assignment
+aubfxy001@asaxlogin3:week2_assignment> nano 04_get_reference_dplex_v4.pbs
+aubfxy001@asaxlogin3:week2_assignment> qsub 04_get_reference_dplex_v4.pbs
+1849.asax-pbs1
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin3:week2_assignment> ls
+02_fastqc_run_medium.pbs        04_get_reference_dplex_v4.pbs  log.txt     ref      sra                  tmp       Trimmomatic-0.39.zip
+03_trim_fastp_and_postqc.pbs    bin                            qc          ref.err  SRR25297534_1.fastq  trim      trim.out
+03_trim_trimmomatic_postqc.pbs  jdk11.tgz                      qc_results  ref.out  SRR25297534_2.fastq  trim.err
+aubfxy001@asaxlogin3:week2_assignment> nano ref.err
+aubfxy001@asaxlogin3:week2_assignment> # 1) Initialize conda in this shell
+source ~/miniforge3/etc/profile.d/conda.sh
+
+# 2) Create an env with bwa + samtools (once)
+conda create -y -n dplex bwa=0.7.17 samtools=1.17 -c conda-forge -c bioconda
+
+# 3) Sanity check
+conda activate dplex
+which bwa; bwa 2>&1 | head -n1
+which samtools; samtools --version | head -n1
+conda deactivate
+Channels:
+ - conda-forge
+ - bioconda
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 25.3.1
+    latest version: 25.7.0
+
+Please update conda by running
+
+    $ conda update -n base -c conda-forge conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/aubfxy001/miniforge3/envs/dplex
+
+  added / updated specs:
+    - bwa=0.7.17
+    - samtools=1.17
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    bwa-0.7.17                 |      he4a0461_11         192 KB  bioconda
+    htslib-1.21                |       h5efdd21_0         3.0 MB  bioconda
+    libcurl-8.8.0              |       hca28451_1         401 KB  conda-forge
+    libdeflate-1.24            |       h86f0d12_0          71 KB  conda-forge
+    libnghttp2-1.58.0          |       h47da74e_1         617 KB  conda-forge
+    libssh2-1.11.0             |       h0841786_0         265 KB  conda-forge
+    libzlib-1.2.13             |       h4ab18f5_6          60 KB  conda-forge
+    samtools-1.17              |       hd87286a_2         449 KB  bioconda
+    zlib-1.2.13                |       h4ab18f5_6          91 KB  conda-forge
+    zstd-1.5.6                 |       ha6fb4c9_0         542 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:         5.6 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge 
+  _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-2_gnu 
+  bwa                bioconda/linux-64::bwa-0.7.17-he4a0461_11 
+  bzip2              conda-forge/linux-64::bzip2-1.0.8-h4bc722e_7 
+  c-ares             conda-forge/linux-64::c-ares-1.34.5-hb9d3cd8_0 
+  ca-certificates    conda-forge/noarch::ca-certificates-2025.8.3-hbd8a1cb_0 
+  htslib             bioconda/linux-64::htslib-1.21-h5efdd21_0 
+  keyutils           conda-forge/linux-64::keyutils-1.6.3-hb9d3cd8_0 
+  krb5               conda-forge/linux-64::krb5-1.21.3-h659f571_0 
+  libcurl            conda-forge/linux-64::libcurl-8.8.0-hca28451_1 
+  libdeflate         conda-forge/linux-64::libdeflate-1.24-h86f0d12_0 
+  libedit            conda-forge/linux-64::libedit-3.1.20250104-pl5321h7949ede_0 
+  libev              conda-forge/linux-64::libev-4.33-hd590300_2 
+  libgcc             conda-forge/linux-64::libgcc-15.1.0-h767d61c_4 
+  libgcc-ng          conda-forge/linux-64::libgcc-ng-15.1.0-h69a702a_4 
+  libgomp            conda-forge/linux-64::libgomp-15.1.0-h767d61c_4 
+  liblzma            conda-forge/linux-64::liblzma-5.8.1-hb9d3cd8_2 
+  liblzma-devel      conda-forge/linux-64::liblzma-devel-5.8.1-hb9d3cd8_2 
+  libnghttp2         conda-forge/linux-64::libnghttp2-1.58.0-h47da74e_1 
+  libssh2            conda-forge/linux-64::libssh2-1.11.0-h0841786_0 
+  libstdcxx          conda-forge/linux-64::libstdcxx-15.1.0-h8f9b012_4 
+  libstdcxx-ng       conda-forge/linux-64::libstdcxx-ng-15.1.0-h4852527_4 
+  libxcrypt          conda-forge/linux-64::libxcrypt-4.4.36-hd590300_1 
+  libzlib            conda-forge/linux-64::libzlib-1.2.13-h4ab18f5_6 
+  ncurses            conda-forge/linux-64::ncurses-6.5-h2d0b736_3 
+  openssl            conda-forge/linux-64::openssl-3.5.2-h26f9b46_0 
+  perl               conda-forge/linux-64::perl-5.32.1-7_hd590300_perl5 
+  samtools           bioconda/linux-64::samtools-1.17-hd87286a_2 
+  xz                 conda-forge/linux-64::xz-5.8.1-hbcc6ac9_2 
+  xz-gpl-tools       conda-forge/linux-64::xz-gpl-tools-5.8.1-hbcc6ac9_2 
+  xz-tools           conda-forge/linux-64::xz-tools-5.8.1-hb9d3cd8_2 
+  zlib               conda-forge/linux-64::zlib-1.2.13-h4ab18f5_6 
+  zstd               conda-forge/linux-64::zstd-1.5.6-ha6fb4c9_0 
+
+
+
+Downloading and Extracting Packages:
+                                                                                                                                                                           
+Preparing transaction: done                                                                                                                                                
+Verifying transaction: done                                                                                                                                                
+Executing transaction: done                                                                                                                                                
+#                                                                                                                                                                          
+# To activate this environment, use                                                                                                                                        
+#                                                                                                                                                                          
+#     $ conda activate dplex                                                                                                                                               
+#                                                                                                                                                                          
+# To deactivate an active environment, use                                                                                                                                 
+#
+#     $ conda deactivate
+
+~/miniforge3/envs/dplex/bin/bwa
+
+~/miniforge3/envs/dplex/bin/samtools
+samtools 1.17
+aubfxy001@asaxlogin3:week2_assignment> nano 04_get_reference_dplex_v4.pbs
+aubfxy001@asaxlogin3:week2_assignment> qsub 04_get_reference_dplex_v4.pbs
+1851.asax-pbs1
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1851.asax-pbs1  aubfxy0* medium   get_ref_d* 589613   1   2    4gb 02:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1851.asax-pbs1  aubfxy0* medium   get_ref_d* 589613   1   2    4gb 02:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1851.asax-pbs1  aubfxy0* medium   get_ref_d* 589613   1   2    4gb 02:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1851.asax-pbs1  aubfxy0* medium   get_ref_d* 589613   1   2    4gb 02:00 R 00:01
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1851.asax-pbs1  aubfxy0* medium   get_ref_d* 589613   1   2    4gb 02:00 R 00:01
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1851.asax-pbs1  aubfxy0* medium   get_ref_d* 589613   1   2    4gb 02:00 R 00:03
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin3:week2_assignment> qstat -x -f $(qselect -u $USER | tail -1) | egrep 'Exit_status|walltime' || true
+sed -n '1,120p' ref.out
+sed -n '1,60p'  ref.err
+ls -lh /scratch/$USER/week2_assignment/ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa*
+    resources_used.walltime = 00:01:01
+    Resource_List.walltime = 04:00:00
+    Exit_status = 3
+    Resource_List.walltime = 08:00:00
+    Resource_List.walltime = 16:00:00
+    resources_used.walltime = 00:07:39
+    Resource_List.walltime = 04:00:00
+    Exit_status = 0
+    resources_used.walltime = 00:01:43
+    Resource_List.walltime = 01:00:00
+    Exit_status = 2
+    resources_used.walltime = 00:00:01
+    Resource_List.walltime = 02:00:00
+    Exit_status = 2
+    resources_used.walltime = 00:01:35
+    Resource_List.walltime = 03:00:00
+    Exit_status = 0
+    resources_used.walltime = 00:00:01
+    Resource_List.walltime = 01:00:00
+    Exit_status = 0
+    resources_used.walltime = 00:00:01
+    Resource_List.walltime = 02:00:00
+    Exit_status = 1
+    resources_used.walltime = 00:00:01
+    Resource_List.walltime = 04:00:00
+    Exit_status = 1
+    resources_used.walltime = 00:00:02
+    Resource_List.walltime = 40:00:00
+    Exit_status = 1
+    resources_used.walltime = 00:09:47
+    Resource_List.walltime = 01:10:00
+    Exit_status = 0
+    resources_used.walltime = 00:00:02
+    Resource_List.walltime = 01:30:00
+    Exit_status = 127
+    resources_used.walltime = 00:00:01
+    Resource_List.walltime = 01:30:00
+    Exit_status = 127
+    resources_used.walltime = 00:56:58
+    Resource_List.walltime = 01:30:00
+    Exit_status = 0
+    resources_used.walltime = 00:00:07
+    Resource_List.walltime = 01:10:00
+    Exit_status = 2
+    resources_used.walltime = 00:05:00
+    Resource_List.walltime = 02:00:00
+    Exit_status = 0
+-rw-r--r-- 1 aubfxy001 aubpathbio 242M Aug 26 22:30 Danaus_plexippus.Dplex_v4.dna.toplevel.fa
+-rw-r--r-- 1 aubfxy001 aubpathbio 162K Aug 26 22:34 Danaus_plexippus.Dplex_v4.dna.toplevel.fa.amb
+-rw-r--r-- 1 aubfxy001 aubpathbio 423K Aug 26 22:34 Danaus_plexippus.Dplex_v4.dna.toplevel.fa.ann
+-rw-r--r-- 1 aubfxy001 aubpathbio 238M Aug 26 22:34 Danaus_plexippus.Dplex_v4.dna.toplevel.fa.bwt
+-rw-r--r-- 1 aubfxy001 aubpathbio 133K Aug 26 22:30 Danaus_plexippus.Dplex_v4.dna.toplevel.fa.fai
+-rw-r--r-- 1 aubfxy001 aubpathbio  60M Aug 26 22:34 Danaus_plexippus.Dplex_v4.dna.toplevel.fa.pac
+-rw-r--r-- 1 aubfxy001 aubpathbio 119M Aug 26 22:35 Danaus_plexippus.Dplex_v4.dna.toplevel.fa.sa
+DUEA01000031.1	30062
+DUEA01004115.1	27930
+DUEA01000032.1	18115
+DUEA01000033.1	16974
+DUEA01000034.1	16181
+DUEA01000035.1	15621
+DUEA01000036.1	14826
+DUEA01000037.1	14577
+DUEA01000038.1	12937
+DUEA01000039.1	12559
+DUEA01000040.1	12509
+DUEA01000041.1	12023
+DUEA01000042.1	12003
+DUEA01000043.1	11191
+DUEA01000044.1	10720
+DUEA01000045.1	10609
+DUEA01000046.1	10506
+DUEA01000047.1	10120
+DUEA01000048.1	9514
+DUEA01000049.1	9497
+[DONE] Reference ready.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 69.7M  100 69.7M    0     0  20.7M      0  0:00:03  0:00:03 --:--:-- 20.7M
+[bwa_index] Pack FASTA... 1.78 sec
+[bwa_index] Construct BWT for the packed sequence...
+[BWTIncCreate] textLength=497352828, availableWord=46995220
+[BWTIncConstructFromPacked] 10 iterations done. 76269100 characters processed.
+[BWTIncConstructFromPacked] 20 iterations done. 142103980 characters processed.
+[BWTIncConstructFromPacked] 30 iterations done. 200614204 characters processed.
+[BWTIncConstructFromPacked] 40 iterations done. 252614220 characters processed.
+[BWTIncConstructFromPacked] 50 iterations done. 298827948 characters processed.
+[BWTIncConstructFromPacked] 60 iterations done. 339898780 characters processed.
+[BWTIncConstructFromPacked] 70 iterations done. 376398636 characters processed.
+[BWTIncConstructFromPacked] 80 iterations done. 408835772 characters processed.
+[BWTIncConstructFromPacked] 90 iterations done. 437661932 characters processed.
+[BWTIncConstructFromPacked] 100 iterations done. 463278652 characters processed.
+[BWTIncConstructFromPacked] 110 iterations done. 486042844 characters processed.
+[bwt_gen] Finished constructing BWT in 116 iterations.
+[bwa_index] 211.13 seconds elapse.
+[bwa_index] Update BWT... 1.15 sec
+[bwa_index] Pack forward-only FASTA... 1.13 sec
+[bwa_index] Construct SA from BWT and Occ... 71.68 sec
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa index Danaus_plexippus.Dplex_v4.dna.toplevel.fa
+[main] Real time: 289.832 sec; CPU: 286.874 sec
+-rw-r--r-- 1 aubfxy001 aubpathbio 242M Aug 26 22:30 /scratch/aubfxy001/week2_assignment/ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa
+-rw-r--r-- 1 aubfxy001 aubpathbio 162K Aug 26 22:34 /scratch/aubfxy001/week2_assignment/ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa.amb
+-rw-r--r-- 1 aubfxy001 aubpathbio 423K Aug 26 22:34 /scratch/aubfxy001/week2_assignment/ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa.ann
+-rw-r--r-- 1 aubfxy001 aubpathbio 238M Aug 26 22:34 /scratch/aubfxy001/week2_assignment/ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa.bwt
+-rw-r--r-- 1 aubfxy001 aubpathbio 133K Aug 26 22:30 /scratch/aubfxy001/week2_assignment/ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa.fai
+-rw-r--r-- 1 aubfxy001 aubpathbio  60M Aug 26 22:34 /scratch/aubfxy001/week2_assignment/ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa.pac
+-rw-r--r-- 1 aubfxy001 aubpathbio 119M Aug 26 22:35 /scratch/aubfxy001/week2_assignment/ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa.sa
+aubfxy001@asaxlogin3:week2_assignment> nano 05_align_bwa_mem.pbs 
+aubfxy001@asaxlogin3:week2_assignment> qsub 05_align_bwa_mem.pbs
+1853.asax-pbs1
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:02
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:03
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:10
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:13
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:14
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1853.asax-pbs1  aubfxy0* medium   bwa_mem_d* 460766   1   8   16gb 04:00 R 00:16
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin3:week2_assignment> sed -n '1,120p' align.out
+[DONE] Alignment finished: SRR25297534.dplexv4.sorted.bam
+aubfxy001@asaxlogin3:week2_assignment> sed -n '1,80p'  align.err
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 557956 sequences (80000129 bp)...
+[M::process] read 552200 sequences (80000194 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (435, 224643, 148, 421)
+[M::mem_pestat] analyzing insert size distribution for orientation FF...
+[M::mem_pestat] (25, 50, 75) percentile: (115, 182, 283)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 619)
+[M::mem_pestat] mean and std.dev: (194.26, 112.45)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 787)
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (181, 228, 282)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 484)
+[M::mem_pestat] mean and std.dev: (232.18, 76.51)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 585)
+[M::mem_pestat] analyzing insert size distribution for orientation RF...
+[M::mem_pestat] (25, 50, 75) percentile: (1848, 3355, 4766)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 10602)
+[M::mem_pestat] mean and std.dev: (3439.05, 2324.42)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 13520)
+[M::mem_pestat] analyzing insert size distribution for orientation RR...
+[M::mem_pestat] (25, 50, 75) percentile: (108, 167, 264)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 576)
+[M::mem_pestat] mean and std.dev: (188.89, 115.22)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 732)
+[M::mem_pestat] skip orientation FF
+[M::mem_pestat] skip orientation RF
+[M::mem_pestat] skip orientation RR
+[M::mem_process_seqs] Processed 557956 reads in 184.096 CPU sec, 23.091 real sec
+[M::process] read 550786 sequences (80000059 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (438, 222045, 143, 389)
+[M::mem_pestat] analyzing insert size distribution for orientation FF...
+[M::mem_pestat] (25, 50, 75) percentile: (120, 173, 264)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 552)
+[M::mem_pestat] mean and std.dev: (179.81, 94.70)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 696)
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (181, 229, 283)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 487)
+[M::mem_pestat] mean and std.dev: (232.70, 77.08)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 589)
+[M::mem_pestat] analyzing insert size distribution for orientation RF...
+[M::mem_pestat] (25, 50, 75) percentile: (2419, 3397, 4801)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 9565)
+[M::mem_pestat] mean and std.dev: (3637.45, 2184.92)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 12377)
+[M::mem_pestat] analyzing insert size distribution for orientation RR...
+[M::mem_pestat] (25, 50, 75) percentile: (115, 161, 254)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 532)
+[M::mem_pestat] mean and std.dev: (168.77, 89.94)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 671)
+[M::mem_pestat] skip orientation FF
+[M::mem_pestat] skip orientation RF
+[M::mem_pestat] skip orientation RR
+[M::mem_process_seqs] Processed 552200 reads in 183.916 CPU sec, 23.031 real sec
+[M::process] read 550852 sequences (80000164 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (384, 222421, 139, 380)
+[M::mem_pestat] analyzing insert size distribution for orientation FF...
+[M::mem_pestat] (25, 50, 75) percentile: (118, 171, 316)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 712)
+[M::mem_pestat] mean and std.dev: (194.22, 110.93)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 910)
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (181, 229, 283)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 487)
+[M::mem_pestat] mean and std.dev: (232.83, 76.90)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 589)
+[M::mem_pestat] analyzing insert size distribution for orientation RF...
+[M::mem_pestat] (25, 50, 75) percentile: (2431, 3656, 5459)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 11515)
+[M::mem_pestat] mean and std.dev: (3952.94, 2157.33)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 14543)
+[M::mem_pestat] analyzing insert size distribution for orientation RR...
+[M::mem_pestat] (25, 50, 75) percentile: (110, 175, 280)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 620)
+[M::mem_pestat] mean and std.dev: (184.84, 109.84)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 790)
+[M::mem_pestat] skip orientation FF
+[M::mem_pestat] skip orientation RF
+[M::mem_pestat] skip orientation RR
+[M::mem_process_seqs] Processed 550786 reads in 184.678 CPU sec, 23.131 real sec
+aubfxy001@asaxlogin3:week2_assignment> ls -lh SRR25297534.dplexv4.sorted.bam SRR25297534.dplexv4.sorted.bam.bai
+-rw-r--r-- 1 aubfxy001 aubpathbio  1.7G Aug 26 23:07 SRR25297534.dplexv4.sorted.bam
+-rw-r--r-- 1 aubfxy001 aubpathbio 1023K Aug 26 23:07 SRR25297534.dplexv4.sorted.bam.bai
+aubfxy001@asaxlogin3:week2_assignment> sed -n '1,50p' SRR25297534.flagstat.txt
+31818650 + 0 in total (QC-passed reads + QC-failed reads)
+31211636 + 0 primary
+0 + 0 secondary
+607014 + 0 supplementary
+0 + 0 duplicates
+0 + 0 primary duplicates
+31169855 + 0 mapped (97.96% : N/A)
+30562841 + 0 primary mapped (97.92% : N/A)
+31211636 + 0 paired in sequencing
+15605818 + 0 read1
+15605818 + 0 read2
+29564814 + 0 properly paired (94.72% : N/A)
+30476886 + 0 with itself and mate mapped
+85955 + 0 singletons (0.28% : N/A)
+570146 + 0 with mate mapped to a different chr
+351786 + 0 with mate mapped to a different chr (mapQ>=5)
+aubfxy001@asaxlogin3:week2_assignment> head -n 5 SRR25297534.idxstats.tsv
+DUEA01000031.1	30062	2797	1
+DUEA01004115.1	27930	10240	29
+DUEA01000032.1	18115	1707	4
+DUEA01000033.1	16974	1200	10
+DUEA01000034.1	16181	904	14
+aubfxy001@asaxlogin3:week2_assignment> nano 06_coverage.pbs
+aubfxy001@asaxlogin3:week2_assignment> qsub 06_coverage.pbs
+1855.asax-pbs1
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1855.asax-pbs1  aubfxy0* medium   cov_dplex  592571   1   2    6gb 02:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1855.asax-pbs1  aubfxy0* medium   cov_dplex  592571   1   2    6gb 02:00 R 00:01
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1855.asax-pbs1  aubfxy0* medium   cov_dplex  592571   1   2    6gb 02:00 R 00:02
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+aubfxy001@asaxlogin3:week2_assignment> sed -n '1,80p' cov.out
+[DONE] Coverage metrics written: coverage_table.tsv, mean_depth.txt, breadth.txt
+aubfxy001@asaxlogin3:week2_assignment> sed -n '1,40p' cov.err
+aubfxy001@asaxlogin3:week2_assignment> head -n 5 coverage_table.tsv
+#rname	startpos	endpos	numreads	covbases	coverage	meandepth	meanbaseq	meanmapq
+DUEA01000031.1	1	30062	2797	26656	88.6701	12.8085	40.2	24.3
+DUEA01004115.1	1	27930	10240	15412	55.1808	47.7295	40.1	39
+DUEA01000032.1	1	18115	1707	12892	71.1675	11.6196	40.1	31.1
+DUEA01000033.1	1	16974	1200	14930	87.9581	9.45741	40.1	36.5
+aubfxy001@asaxlogin3:week2_assignment> cat mean_depth.txt
+17.092
+aubfxy001@asaxlogin3:week2_assignment> cat breadth.txt
+breadth>=1x	0.9498
+breadth>=10x	0.7836
+aubfxy001@asaxlogin3:week2_assignment> source ~/miniforge3/etc/profile.d/conda.sh
+conda activate dplex
+conda install -y -c bioconda bcftools=1.17
+conda deactivate
+Channels:
+ - bioconda
+ - conda-forge
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 25.3.1
+    latest version: 25.7.0
+
+Please update conda by running
+
+    $ conda update -n base -c conda-forge conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/aubfxy001/miniforge3/envs/dplex
+
+  added / updated specs:
+    - bcftools=1.17
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    bcftools-1.17              |       h3cc50cf_1         923 KB  bioconda
+    gsl-2.7                    |       he838d99_0         3.2 MB  conda-forge
+    ------------------------------------------------------------
+                                           Total:         4.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  bcftools           bioconda/linux-64::bcftools-1.17-h3cc50cf_1 
+  gsl                conda-forge/linux-64::gsl-2.7-he838d99_0 
+  libblas            conda-forge/linux-64::libblas-3.9.0-34_h59b9bed_openblas 
+  libcblas           conda-forge/linux-64::libcblas-3.9.0-34_he106b2a_openblas 
+  libgfortran        conda-forge/linux-64::libgfortran-15.1.0-h69a702a_4 
+  libgfortran5       conda-forge/linux-64::libgfortran5-15.1.0-hcea5267_4 
+  libopenblas        conda-forge/linux-64::libopenblas-0.3.30-pthreads_h94d23a6_2 
+
+
+
+Downloading and Extracting Packages:
+                                                                                                                                                                           
+Preparing transaction: done                                                                                                                                                
+Verifying transaction: done
+Executing transaction: done
+aubfxy001@asaxlogin3:week2_assignment> nano 07_variants_bcftools.pbs
+aubfxy001@asaxlogin3:week2_assignment> qsub 07_variants_bcftools.pbs
+1858.asax-pbs1
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1858.asax-pbs1  aubfxy0* medium   snv_dplex  593443   1   4   12gb 04:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1858.asax-pbs1  aubfxy0* medium   snv_dplex  593443   1   4   12gb 04:00 R 00:00
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1858.asax-pbs1  aubfxy0* medium   snv_dplex  593443   1   4   12gb 04:00 R 00:01
+aubfxy001@asaxlogin3:week2_assignment> ls
+02_fastqc_run_medium.pbs        07_variants_bcftools.pbs  cov.err         qc_results           SRR25297534_2.fastq                 trim
+03_trim_fastp_and_postqc.pbs    align.err                 cov.out         ref                  SRR25297534.dplexv4.sorted.bam      trim.err
+03_trim_trimmomatic_postqc.pbs  align.out                 jdk11.tgz       ref.err              SRR25297534.dplexv4.sorted.bam.bai  Trimmomatic-0.39.zip
+04_get_reference_dplex_v4.pbs   bin                       log.txt         ref.out              SRR25297534.flagstat.txt            trim.out
+05_align_bwa_mem.pbs            breadth.txt               mean_depth.txt  sra                  SRR25297534.idxstats.tsv            variants.raw.vcf.gz
+06_coverage.pbs                 coverage_table.tsv        qc              SRR25297534_1.fastq  tmp
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1858.asax-pbs1  aubfxy0* medium   snv_dplex  593443   1   4   12gb 04:00 R 00:03
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1858.asax-pbs1  aubfxy0* medium   snv_dplex  593443   1   4   12gb 04:00 R 00:06
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1858.asax-pbs1  aubfxy0* medium   snv_dplex  593443   1   4   12gb 04:00 R 00:08
+aubfxy001@asaxlogin3:week2_assignment> ls
+02_fastqc_run_medium.pbs        07_variants_bcftools.pbs  cov.err         qc_results           SRR25297534_2.fastq                 trim
+03_trim_fastp_and_postqc.pbs    align.err                 cov.out         ref                  SRR25297534.dplexv4.sorted.bam      trim.err
+03_trim_trimmomatic_postqc.pbs  align.out                 jdk11.tgz       ref.err              SRR25297534.dplexv4.sorted.bam.bai  Trimmomatic-0.39.zip
+04_get_reference_dplex_v4.pbs   bin                       log.txt         ref.out              SRR25297534.flagstat.txt            trim.out
+05_align_bwa_mem.pbs            breadth.txt               mean_depth.txt  sra                  SRR25297534.idxstats.tsv            variants.raw.vcf.gz
+06_coverage.pbs                 coverage_table.tsv        qc              SRR25297534_1.fastq  tmp
+aubfxy001@asaxlogin3:week2_assignment> nano 02_fastqc_run_medium.pbs 
+aubfxy001@asaxlogin3:week2_assignment> qstat -u aubfxy001
+
+asax-pbs1: 
+                                                            Req'd  Req'd   Elap
+Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
+--------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
+1858.asax-pbs1  aubfxy0* medium   snv_dplex  593443   1   4   12gb 04:00 R 00:10
+aubfxy001@asaxlogin3:week2_assignment> nano 03_trim_trimmomatic_postqc.pbs 
+
+  GNU nano 5.6.1                                                         03_trim_trimmomatic_postqc.pbs                                                                    
+#!/bin/bash
+#PBS -N trim_trimmomatic_postqc
+#PBS -q medium
+#PBS -l select=1:ncpus=4:mem=8gb
+#PBS -l walltime=01:30:00
+#PBS -o /scratch/aubfxy001/week2_assignment/trim.out
+#PBS -e /scratch/aubfxy001/week2_assignment/trim.err
+
+set -Ee -o pipefail
+export LC_ALL=C LANG=C
+
+# --- paths & inputs ---
+cd "${PBS_O_WORKDIR:-/scratch/aubfxy001/week2_assignment}"
+R1=SRR25297534_1.fastq
+R2=SRR25297534_2.fastq
+test -s "$R1" && test -s "$R2"
+
+mkdir -p bin tmp trim qc/fastqc_posttrim
+export TMPDIR="$PWD/tmp"
+
+# --- Java: prefer a modern JRE (Trimmomatic 0.39 wants Java >=8) ---
+set +u
+source /etc/profile 2>/dev/null || true
+source /etc/profile.d/modules.sh 2>/dev/null || true
+set -u
+module load openjdk || module load java || true
+
+# If java is missing or older than 1.8, fetch a local OpenJDK 11 (no root needed)
+JAVA_BIN="$(command -v java || true)"
+JAVA_OK=0
+if [[ -n "$JAVA_BIN" ]]; then
+  JV=$("$JAVA_BIN" -version 2>&1 | awk -F[\".] '/version/{print $2}')
+  # JV >= 1.8 or >= 8 (handles "1.8.0_x" and "11.x")
+  if echo "$("$JAVA_BIN" -version 2>&1)" | grep -Eq 'version "1\.(8|9)|version "(1[1-9]|[2-9][0-9])'; then
+    JAVA_OK=1
+  fi
+fi
+if [[ $JAVA_OK -eq 0 ]]; then
+  echo "[INFO] Installing local OpenJDK 11..."
+  mkdir -p bin/jdk
+  # Temurin/Adoptium JDK11 x64 (fallback to Azul if needed)
+  URLS=(
+    "https://github.com/adoptium/temurin11-binaries/releases/latest/download/OpenJDK11U-jdk_x64_linux_hotspot.tar.gz"
+    "https://cdn.azul.com/zulu/bin/zulu11.72.19-ca-jdk11.0.23-linux_x64.tar.gz"
+  )
+  for U in "${URLS[@]}"; do
+    curl -L --retry 3 -o jdk11.tgz "$U" || continue
+    tar -xzf jdk11.tgz -C bin/jdk --strip-components=1 && break
+    rm -f jdk11.tgz
+  done
+  export PATH="$PWD/bin/jdk/bin:$PATH"
+fi
+which java && java -version
+
+# --- Trimmomatic 0.39: module if present, else download the official binary zip ---
+module load trimmomatic || true
+TRIMMO_JAR=""
+if command -v trimmomatic >/dev/null 2>&1; then
+  # Some clusters provide a wrapper; try to resolve jar via wrapper help (best-effort)
+  TRIMMO_JAR="$(command -v trimmomatic)"
+else
+  if [[ ! -s bin/Trimmomatic-0.39/trimmomatic-0.39.jar ]]; then
+    echo "[INFO] Downloading Trimmomatic 0.39 binary zip..."
+    curl -L --retry 3 -o Trimmomatic-0.39.zip \
+      http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.39.zip
+    unzip -o -q Trimmomatic-0.39.zip -d bin/
+  fi
+  TRIMMO_JAR="bin/Trimmomatic-0.39/trimmomatic-0.39.jar"
+fi
+test -s "$TRIMMO_JAR"
+# --- Run Trimmomatic PE ---
+# Outputs: paired (P) and unpaired (U) gzipped FASTQs
+TR1P=trim/SRR25297534_1P.trim.fastq.gz
+TR1U=trim/SRR25297534_1U.trim.fastq.gz
+TR2P=trim/SRR25297534_2P.trim.fastq.gz
+TR2U=trim/SRR25297534_2U.trim.fastq.gz
+
+java -Xmx6g -jar "$TRIMMO_JAR" PE -threads 4 -phred33 \
+  "$R1" "$R2" \
+  "$TR1P" "$TR1U" \
+  "$TR2P" "$TR2U" \
+  ILLUMINACLIP:bin/Trimmomatic-0.39/adapters/TruSeq3-PE.fa:2:30:10 \
+  LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:50 \
+  -trimlog trim/trimmomatic.log
+
+# --- Post-trim FastQC on paired reads ---
+# Use the site FastQC you already used successfully (v0.10.1)
+export PATH="/apps/x86-64/apps/fastqc_0.10.1/FastQC:$PATH"
+which fastqc && fastqc --version
+fastqc -t 2 -o qc/fastqc_posttrim "$TR1P" "$TR2P"
+
+# Make top-level HTMLs (FastQC v0.10.1 writes HTML inside the ZIP)
+for z in qc/fastqc_posttrim/*_fastqc.zip; do
+  d="${z%.zip}"
+  unzip -o -q "$z" -d "$d"
+  cp "$d/fastqc_report.html" "${d}.html"
+done
+
+# Quick PASS/WARN/FAIL CSV for trimmed reads
+printf "file,status,module\n" > qc/fastqc_posttrim/summary_posttrim.csv
+for z in qc/fastqc_posttrim/*_fastqc.zip; do
+  base=$(basename "$z" _fastqc.zip)
+  unzip -p "$z" '*/summary.txt' | awk -F '\t' -v f="$base" '{print f","$1","$2}'
+done >> qc/fastqc_posttrim/summary_posttrim.csv
+
+echo "[DONE] Trimmomatic + post-trim FastQC complete."
