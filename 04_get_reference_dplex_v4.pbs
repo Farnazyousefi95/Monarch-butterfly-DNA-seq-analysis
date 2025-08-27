@@ -1,0 +1,44 @@
+#!/bin/bash
+#PBS -N get_ref_dplex_v4
+#PBS -q medium
+#PBS -l select=1:ncpus=2:mem=4gb
+#PBS -l walltime=02:00:00
+#PBS -o /scratch/aubfxy001/week2_assignment/ref.out
+#PBS -e /scratch/aubfxy001/week2_assignment/ref.err
+
+set -Ee -o pipefail
+export LC_ALL=C LANG=C
+
+PROJ=/scratch/aubfxy001/week2_assignment
+REFDIR=$PROJ/ref
+mkdir -p "$REFDIR" "$PROJ/tmp"
+cd "$REFDIR"
+
+REF_FA=Danaus_plexippus.Dplex_v4.dna.toplevel.fa
+REF_URL=https://ftp.ebi.ac.uk/ensemblgenomes/pub/release-61/metazoa/fasta/danaus_plexippus/dna/Danaus_plexippus.Dplex_v4.dna.toplevel.fa.gz
+
+# download
+rm -f ${REF_FA}.gz
+if command -v curl >/dev/null 2>&1; then
+  curl -L --retry 3 -o ${REF_FA}.gz "$REF_URL" || true
+fi
+if [[ ! -s ${REF_FA}.gz ]]; then
+  wget -O ${REF_FA}.gz "$REF_URL"
+fi
+
+gunzip -f ${REF_FA}.gz
+test -s ${REF_FA}
+
+
+# --- activate conda env with bwa+samtools ---
+source ~/miniforge3/etc/profile.d/conda.sh
+conda activate dplex || { echo "[ERROR] conda env 'dplex' not found"; exit 10; }
+
+# --- index ---
+samtools faidx ${REF_FA}
+bwa index ${REF_FA}
+
+# --- report ---
+ls -lh ${REF_FA}*
+awk '{print $1"\t"$2}' ${REF_FA}.fai | sed -n '1,20p'
+echo "[DONE] Reference ready."
