@@ -1,0 +1,107 @@
+#!/bin/bash
+#PBS -N trim_trimmomatic_postqc
+#PBS -q medium
+#PBS -l select=1:ncpus=4:mem=8gb
+#PBS -l walltime=01:30:00
+#PBS -o /scratch/aubfxy001/week2_assignment/trim.out
+#PBS -e /scratch/aubfxy001/week2_assignment/trim.err
+
+set -Ee -o pipefail
+export LC_ALL=C LANG=C
+
+# --- paths & inputs ---
+cd "${PBS_O_WORKDIR:-/scratch/aubfxy001/week2_assignment}"
+R1=SRR25297534_1.fastq
+R2=SRR25297534_2.fastq
+test -s "$R1" && test -s "$R2"
+
+mkdir -p bin tmp trim qc/fastqc_posttrim
+export TMPDIR="$PWD/tmp"
+
+# --- Java: prefer a modern JRE (Trimmomatic 0.39 wants Java >=8) ---
+set +u
+source /etc/profile 2>/dev/null || true
+source /etc/profile.d/modules.sh 2>/dev/null || true
+set -u
+module load openjdk || module load java || true
+
+# If java is missing or older than 1.8, fetch a local OpenJDK 11 (no root needed)
+JAVA_BIN="$(command -v java || true)"
+JAVA_OK=0
+if [[ -n "$JAVA_BIN" ]]; then
+  JV=$("$JAVA_BIN" -version 2>&1 | awk -F[\".] '/version/{print $2}')
+  # JV >= 1.8 or >= 8 (handles "1.8.0_x" and "11.x")
+  if echo "$("$JAVA_BIN" -version 2>&1)" | grep -Eq 'version "1\.(8|9)|version "(1[1-9]|[2-9][0-9])'; then
+    JAVA_OK=1
+  fi
+fi
+if [[ $JAVA_OK -eq 0 ]]; then
+  echo "[INFO] Installing local OpenJDK 11..."
+  mkdir -p bin/jdk
+  # Temurin/Adoptium JDK11 x64 (fallback to Azul if needed)
+  URLS=(
+    "https://github.com/adoptium/temurin11-binaries/releases/latest/download/OpenJDK11U-jdk_x64_linux_hotspot.tar.gz"
+    "https://cdn.azul.com/zulu/bin/zulu11.72.19-ca-jdk11.0.23-linux_x64.tar.gz"
+  )
+  for U in "${URLS[@]}"; do
+    curl -L --retry 3 -o jdk11.tgz "$U" || continue
+    tar -xzf jdk11.tgz -C bin/jdk --strip-components=1 && break
+    rm -f jdk11.tgz
+  done
+  export PATH="$PWD/bin/jdk/bin:$PATH"
+fi
+which java && java -version
+
+# --- Trimmomatic 0.39: module if present, else download the official binary zip ---
+module load trimmomatic || true
+TRIMMO_JAR=""
+if command -v trimmomatic >/dev/null 2>&1; then
+  # Some clusters provide a wrapper; try to resolve jar via wrapper help (best-effort)
+  TRIMMO_JAR="$(command -v trimmomatic)"
+else
+  if [[ ! -s bin/Trimmomatic-0.39/trimmomatic-0.39.jar ]]; then
+    echo "[INFO] Downloading Trimmomatic 0.39 binary zip..."
+    curl -L --retry 3 -o Trimmomatic-0.39.zip \
+      http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.39.zip
+    unzip -o -q Trimmomatic-0.39.zip -d bin/
+  fi
+  TRIMMO_JAR="bin/Trimmomatic-0.39/trimmomatic-0.39.jar"
+fi
+test -s "$TRIMMO_JAR"
+
+# --- Run Trimmomatic PE ---
+# Outputs: paired (P) and unpaired (U) gzipped FASTQs
+TR1P=trim/SRR25297534_1P.trim.fastq.gz
+TR1U=trim/SRR25297534_1U.trim.fastq.gz
+TR2P=trim/SRR25297534_2P.trim.fastq.gz
+TR2U=trim/SRR25297534_2U.trim.fastq.gz
+
+java -Xmx6g -jar "$TRIMMO_JAR" PE -threads 4 -phred33 \
+  "$R1" "$R2" \
+  "$TR1P" "$TR1U" \
+  "$TR2P" "$TR2U" \
+  ILLUMINACLIP:bin/Trimmomatic-0.39/adapters/TruSeq3-PE.fa:2:30:10 \
+  LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:50 \
+  -trimlog trim/trimmomatic.log
+
+# --- Post-trim FastQC on paired reads ---
+# Use the site FastQC you already used successfully (v0.10.1)
+export PATH="/apps/x86-64/apps/fastqc_0.10.1/FastQC:$PATH"
+which fastqc && fastqc --version
+fastqc -t 2 -o qc/fastqc_posttrim "$TR1P" "$TR2P"
+
+# Make top-level HTMLs (FastQC v0.10.1 writes HTML inside the ZIP)
+for z in qc/fastqc_posttrim/*_fastqc.zip; do
+  d="${z%.zip}"
+  unzip -o -q "$z" -d "$d"
+  cp "$d/fastqc_report.html" "${d}.html"
+done
+
+# Quick PASS/WARN/FAIL CSV for trimmed reads
+printf "file,status,module\n" > qc/fastqc_posttrim/summary_posttrim.csv
+for z in qc/fastqc_posttrim/*_fastqc.zip; do
+  base=$(basename "$z" _fastqc.zip)
+  unzip -p "$z" '*/summary.txt' | awk -F '\t' -v f="$base" '{print f","$1","$2}'
+done >> qc/fastqc_posttrim/summary_posttrim.csv
+
+echo "[DONE] Trimmomatic + post-trim FastQC complete."

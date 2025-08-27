@@ -1,0 +1,23 @@
+file,status,module
+SRR25297534_1,PASS,Basic Statistics
+SRR25297534_1,PASS,Per base sequence quality
+SRR25297534_1,PASS,Per sequence quality scores
+SRR25297534_1,FAIL,Per base sequence content
+SRR25297534_1,FAIL,Per base GC content
+SRR25297534_1,WARN,Per sequence GC content
+SRR25297534_1,PASS,Per base N content
+SRR25297534_1,WARN,Sequence Length Distribution
+SRR25297534_1,FAIL,Sequence Duplication Levels
+SRR25297534_1,PASS,Overrepresented sequences
+SRR25297534_1,WARN,Kmer Content
+SRR25297534_2,PASS,Basic Statistics
+SRR25297534_2,PASS,Per base sequence quality
+SRR25297534_2,PASS,Per sequence quality scores
+SRR25297534_2,FAIL,Per base sequence content
+SRR25297534_2,FAIL,Per base GC content
+SRR25297534_2,FAIL,Per sequence GC content
+SRR25297534_2,PASS,Per base N content
+SRR25297534_2,WARN,Sequence Length Distribution
+SRR25297534_2,FAIL,Sequence Duplication Levels
+SRR25297534_2,PASS,Overrepresented sequences
+SRR25297534_2,WARN,Kmer Content

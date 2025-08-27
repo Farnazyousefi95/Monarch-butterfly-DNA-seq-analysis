@@ -1,0 +1,23 @@
+file,status,module
+SRR25297534_1P.trim,PASS,Basic Statistics
+SRR25297534_1P.trim,PASS,Per base sequence quality
+SRR25297534_1P.trim,PASS,Per sequence quality scores
+SRR25297534_1P.trim,FAIL,Per base sequence content
+SRR25297534_1P.trim,FAIL,Per base GC content
+SRR25297534_1P.trim,WARN,Per sequence GC content
+SRR25297534_1P.trim,PASS,Per base N content
+SRR25297534_1P.trim,WARN,Sequence Length Distribution
+SRR25297534_1P.trim,FAIL,Sequence Duplication Levels
+SRR25297534_1P.trim,PASS,Overrepresented sequences
+SRR25297534_1P.trim,WARN,Kmer Content
+SRR25297534_2P.trim,PASS,Basic Statistics
+SRR25297534_2P.trim,PASS,Per base sequence quality
+SRR25297534_2P.trim,PASS,Per sequence quality scores
+SRR25297534_2P.trim,FAIL,Per base sequence content
+SRR25297534_2P.trim,FAIL,Per base GC content
+SRR25297534_2P.trim,WARN,Per sequence GC content
+SRR25297534_2P.trim,PASS,Per base N content
+SRR25297534_2P.trim,WARN,Sequence Length Distribution
+SRR25297534_2P.trim,FAIL,Sequence Duplication Levels
+SRR25297534_2P.trim,PASS,Overrepresented sequences
+SRR25297534_2P.trim,WARN,Kmer Content

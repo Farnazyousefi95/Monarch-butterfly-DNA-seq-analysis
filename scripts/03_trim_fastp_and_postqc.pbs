@@ -1,0 +1,71 @@
+#!/bin/bash
+#PBS -N trim_fastp_postqc
+#PBS -q medium
+#PBS -l select=1:ncpus=4:mem=8gb
+#PBS -l walltime=01:30:00
+#PBS -o /scratch/aubfxy001/week2_assignment/trim.out
+#PBS -e /scratch/aubfxy001/week2_assignment/trim.err
+
+set -Ee -o pipefail
+export LC_ALL=C LANG=C
+
+# --- paths & dirs ---
+cd "${PBS_O_WORKDIR:-/scratch/aubfxy001/week2_assignment}"
+mkdir -p bin trim qc/fastqc_posttrim tmp
+export TMPDIR="$PWD/tmp"
+
+R1=SRR25297534_1.fastq
+R2=SRR25297534_2.fastq
+TR1=trim/SRR25297534_1.trim.fastq.gz
+TR2=trim/SRR25297534_2.trim.fastq.gz
+
+# --- fastp: try module, else download static binary ---
+set +u
+source /etc/profile 2>/dev/null || true
+source /etc/profile.d/modules.sh 2>/dev/null || true
+set -u
+module load fastp || true
+
+if ! command -v fastp >/dev/null 2>&1; then
+  echo "[INFO] fastp module not found; downloading release binary..."
+  # download from fastp releases (version pinned for reproducibility)
+  curl -L -o bin/fastp https://github.com/OpenGene/fastp/releases/download/v0.24.2/fastp
+  chmod +x bin/fastp
+  export PATH="$PWD/bin:$PATH"
+fi
+
+# --- run fastp (paired-end) ---
+# --detect_adapter_for_pe enables extra adapter auto-detection for PE data
+# -q 20 quality cutoff, -l 50 min length after trimming, -w 4 threads
+fastp \
+  -i "$R1" -I "$R2" \
+  -o "$TR1" -O "$TR2" \
+  --detect_adapter_for_pe \
+  -q 20 -l 50 -w 4 \
+  -h trim/fastp_report.html -j trim/fastp_report.json
+
+# --- FastQC on trimmed reads (use the Java+FastQC you already verified) ---
+JAVA_HOME=/apps/x86-64/apps/jdk_1.7.0_17/jdk1.7.0_17
+FASTQC_DIR=/apps/x86-64/apps/fastqc_0.10.1/FastQC
+export PATH="$JAVA_HOME/bin:$FASTQC_DIR:$PATH"
+
+which java && java -version
+which fastqc && fastqc --version
+
+fastqc -t 2 -o qc/fastqc_posttrim "$TR1" "$TR2"
+
+# make top-level HTMLs (FastQC v0.10.1 puts HTML inside the ZIP)
+for z in qc/fastqc_posttrim/*_fastqc.zip; do
+  d="${z%.zip}"
+  unzip -o -q "$z" -d "$d"
+  cp "$d/fastqc_report.html" "${d}.html"
+done
+
+# quick PASS/WARN/FAIL CSV
+printf "file,status,module\n" > qc/fastqc_posttrim/summary_posttrim.csv
+for z in qc/fastqc_posttrim/*_fastqc.zip; do
+  base=$(basename "$z" _fastqc.zip)
+  unzip -p "$z" '*/summary.txt' | awk -F '\t' -v f="$base" '{print f","$1","$2}'
+done >> qc/fastqc_posttrim/summary_posttrim.csv
+
+echo "[DONE] Trim + post-trim FastQC complete."

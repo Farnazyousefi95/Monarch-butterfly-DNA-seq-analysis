@@ -1,0 +1,9 @@
+name: dplex
+channels: [conda-forge, bioconda]
+dependencies:
+  - bwa=0.7.17
+  - samtools=1.17
+  - bcftools=1.17
+  - trimmomatic=0.39
+  - fastqc
+  - openjdk
