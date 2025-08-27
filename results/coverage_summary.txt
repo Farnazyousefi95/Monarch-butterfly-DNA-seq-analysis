@@ -1,0 +1,3 @@
+Mean depth	17.092×
+breadth>=1x	0.9498
+breadth>=10x	0.7836
