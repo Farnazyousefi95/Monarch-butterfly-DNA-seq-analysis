@@ -1,32 +1,10 @@
-# Large or generated data — keep these out of Git
-*.fastq
-*.fastq.gz
-*.fq
-*.fq.gz
-*.bam
-*.bai
-*.cram
-*.crai
-*.sam
-*.sra
-*.vcf
-*.vcf.gz
-*.tbi
-*.bcf
-*.bcf.csi
-*.fai
-*.dict
-*.amb
-*.ann
-*.bwt
-*.pac
-*.sa
-*.zip
-*.tgz
-*.tar.gz
-tmp/
-sra/
-# Project-specific big folders (retain small text summaries only)
-qc/
-trim/
-ref/
+*.fastq*
+*.bam *.bai *.cram *.crai *.sam
+*.vcf* *.bcf* *.tbi *.csi
+*.fai *.dict *.amb *.ann *.bwt *.pac *.sa
+*.zip *.tgz *.tar.gz
+tmp/ sra/
+qc/ trim/ ref/
+
+# ignore giant Trimmomatic log
+logs/trimmomatic.log

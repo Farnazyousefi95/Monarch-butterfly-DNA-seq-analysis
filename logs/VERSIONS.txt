@@ -1,0 +1,6 @@
+Wed Aug 27 01:27:39 AM CDT 2025
+== versions ==
+
+samtools 1.17
+bcftools 1.17
+openjdk version "11.0.25" 2024-10-15 LTS

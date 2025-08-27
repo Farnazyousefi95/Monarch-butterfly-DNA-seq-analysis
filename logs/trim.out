@@ -1,0 +1,8 @@
+[INFO] Installing local OpenJDK 11...
+/scratch/aubfxy001/week2_assignment/bin/jdk/bin/java
+[INFO] Downloading Trimmomatic 0.39 binary zip...
+/apps/x86-64/apps/fastqc_0.10.1/FastQC/fastqc
+FastQC v0.10.1
+Analysis complete for SRR25297534_2P.trim.fastq.gz
+Analysis complete for SRR25297534_1P.trim.fastq.gz
+[DONE] Trimmomatic + post-trim FastQC complete.

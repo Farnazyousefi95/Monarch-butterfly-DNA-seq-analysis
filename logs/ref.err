@@ -1,0 +1,25 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 69.7M    0  234k    0     0   309k      0  0:03:50 --:--:--  0:03:50  309k 33 69.7M   33 23.5M    0     0  12.6M      0  0:00:05  0:00:01  0:00:04 12.6M 67 69.7M   67 47.3M    0     0  17.3M      0  0:00:04  0:00:02  0:00:02 17.3M100 69.7M  100 69.7M    0     0  20.7M      0  0:00:03  0:00:03 --:--:-- 20.7M
+[bwa_index] Pack FASTA... 1.78 sec
+[bwa_index] Construct BWT for the packed sequence...
+[BWTIncCreate] textLength=497352828, availableWord=46995220
+[BWTIncConstructFromPacked] 10 iterations done. 76269100 characters processed.
+[BWTIncConstructFromPacked] 20 iterations done. 142103980 characters processed.
+[BWTIncConstructFromPacked] 30 iterations done. 200614204 characters processed.
+[BWTIncConstructFromPacked] 40 iterations done. 252614220 characters processed.
+[BWTIncConstructFromPacked] 50 iterations done. 298827948 characters processed.
+[BWTIncConstructFromPacked] 60 iterations done. 339898780 characters processed.
+[BWTIncConstructFromPacked] 70 iterations done. 376398636 characters processed.
+[BWTIncConstructFromPacked] 80 iterations done. 408835772 characters processed.
+[BWTIncConstructFromPacked] 90 iterations done. 437661932 characters processed.
+[BWTIncConstructFromPacked] 100 iterations done. 463278652 characters processed.
+[BWTIncConstructFromPacked] 110 iterations done. 486042844 characters processed.
+[bwt_gen] Finished constructing BWT in 116 iterations.
+[bwa_index] 211.13 seconds elapse.
+[bwa_index] Update BWT... 1.15 sec
+[bwa_index] Pack forward-only FASTA... 1.13 sec
+[bwa_index] Construct SA from BWT and Occ... 71.68 sec
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa index Danaus_plexippus.Dplex_v4.dna.toplevel.fa
+[main] Real time: 289.832 sec; CPU: 286.874 sec
