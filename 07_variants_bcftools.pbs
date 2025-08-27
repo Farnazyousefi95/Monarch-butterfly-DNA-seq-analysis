@@ -1,0 +1,20 @@
+!/bin/bash
+#PBS -N snv_dplex
+#PBS -q medium
+#PBS -l select=1:ncpus=4:mem=12gb
+#PBS -l walltime=04:00:00
+#PBS -o /scratch/aubfxy001/week2_assignment/vars.out
+#PBS -e /scratch/aubfxy001/week2_assignment/vars.err
+set -Ee -o pipefail; export LC_ALL=C LANG=C
+PROJ=/scratch/aubfxy001/week2_assignment; cd "$PROJ"
+source ~/miniforge3/etc/profile.d/conda.sh; conda activate dplex
+REF=ref/Danaus_plexippus.Dplex_v4.dna.toplevel.fa
+BAM=SRR25297534.dplexv4.sorted.bam
+bcftools mpileup -Ou -f "$REF" "$BAM" \
+ | bcftools call -mv -Ou \
+ | bcftools view -Oz -o variants.raw.vcf.gz
+tabix -p vcf variants.raw.vcf.gz
+bcftools filter -e 'QUAL<30 || DP<5' -S . variants.raw.vcf.gz -Oz -o variants.filt.vcf.gz
+tabix -p vcf variants.filt.vcf.gz
+bcftools stats -F "$REF" -s - variants.filt.vcf.gz > variants.stats.txt
+echo "[DONE] Variants written: variants.filt.vcf.gz (+ .tbi), stats: variants.stats.txt"
