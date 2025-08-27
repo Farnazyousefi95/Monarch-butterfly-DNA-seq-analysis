@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N cov_dplex
+#PBS -q medium
+#PBS -l select=1:ncpus=2:mem=6gb
+#PBS -l walltime=02:00:00
+#PBS -o /scratch/aubfxy001/week2_assignment/cov.out
+#PBS -e /scratch/aubfxy001/week2_assignment/cov.err
+
+set -Ee -o pipefail
+export LC_ALL=C LANG=C
+
+PROJ=/scratch/aubfxy001/week2_assignment
+cd "$PROJ"
+
+# activate the env that has samtools
+source ~/miniforge3/etc/profile.d/conda.sh
+conda activate dplex
+
+BAM=SRR25297534.dplexv4.sorted.bam
+test -s "$BAM"
+
+# Per-contig + overall summary table (includes mean depth, breadth, etc.)
+samtools coverage -o coverage_table.tsv "$BAM"
+
+# Genome-wide mean depth (simple average across all positions)
+samtools depth -a "$BAM" | awk '{sum+=$3; n++} END{print sum/n}' > mean_depth.txt
+
+# Optional: coverage breadth at >=1x and >=10x (nice number for slides)
+samtools depth -a "$BAM" \
+  | awk 'BEGIN{c1=0;c10=0;N=0}{N++; if($3>0)c1++; if($3>=10)c10++} END{printf("breadth>=1x\t%.4f\nbreadth>=10x\t%.4f\n", c1/N, c10/N)}' \
+  > breadth.txt
+
+echo "[DONE] Coverage metrics written: coverage_table.tsv, mean_depth.txt, breadth.txt"
